@@ -1,0 +1,3 @@
+C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/cmake-build-debug/CMakeFiles/PG4400_V22_Knr1033.dir
+C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/cmake-build-debug/CMakeFiles/rebuild_cache.dir

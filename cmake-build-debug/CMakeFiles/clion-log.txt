@@ -1,0 +1,5 @@
+"C:\Program Files\JetBrains\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2021.3.3/bin/ninja/win/ninja.exe" -G Ninja "C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033"
+paths:  C:/msys64/mingw64/lib/libSDL2_image.dll.a;C:/msys64/mingw64/lib/libmingw32.a;C:/msys64/mingw64/lib/libSDL2main.a;C:/msys64/mingw64/lib/libSDL2.dll.a 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/cmake-build-debug
