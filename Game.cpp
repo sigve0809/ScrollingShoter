@@ -89,7 +89,6 @@ void Game::handleEvents() {
                 case SDLK_a:
                     if (player->xVel == -1) player->xVel = 0;
                     break;
-
             }
         }
 
@@ -102,12 +101,14 @@ void Game::handleEvents() {
     for(auto it = lasers.begin();it !=lasers.end();++it) {
         if(it.operator*()->getY() <= 0 || it.operator*()->getY() >= 600 || it.operator*()->collision()) {
             it.operator*()->outOfMap();
+            delete(it.operator*());
             lasers.erase(it);
             break;
         }
     }
     for(auto it = enemies.begin();it !=enemies.end();++it){
         if (!it.operator*()->isAlive()){
+            delete(it.operator*());
             enemies.erase(it);
             break;
         }
@@ -169,6 +170,7 @@ void Game::render() {
 
 void Game::clean() {
     player->destroyGameObject();
+    delete(player);
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
