@@ -13,10 +13,10 @@ class HandleEvents {
 public:
     //HandleEvents();
 
-    void input(Player *player);
-    void collision(std::vector<Enemy*> *e, std::vector<Laser*> *l, Player *player, Boss *boss);
+    void input(std::shared_ptr<Player> *player);
+    void collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector<std::shared_ptr<Laser>> *l, std::shared_ptr<Player> *player, std::shared_ptr<Boss> *boss);
 
-    void finished(std::vector<GameObject*> *array);
+    void finished(std::vector<std::shared_ptr<GameObject>> *array);
     bool shooting() const{return isShooting;}
     bool running() const{return isRunning;}
     int getKillCount(){return killCount;}

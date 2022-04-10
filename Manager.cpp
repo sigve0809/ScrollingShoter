@@ -30,15 +30,10 @@ void Manager::update() {
         enemyTimer = 500;
     }
     enemyTimer--;
-    for (auto it = elements.begin();it !=elements.end();++it){
-        if (it.operator*()->isActive()){
-            std::cout << "1\n";
-            it.operator*()->Update();
-        }
-    }
+
     std::cout << "done" << std::endl;
 
-    for(Enemy *e: enemies){
+    for(auto e: enemies){
         std::cout << "2\n";
         if (e->isActive() && e->gunReady()) addGameObject<Laser>("../Assets/Laser.png", e->getX() + e->getWidth()*2-2, e->getY()+3, true, renderer, false);
     }
@@ -52,10 +47,10 @@ void Manager::update() {
     deleteNotActive();
     std::cout << "5\n";
 
-    eH->input(player);
+    eH->input(&player);
     std::cout << "6\n";
 
-    eH->collision(&enemies, &lasers, player, boss);
+    eH->collision(&enemies, &lasers, &player, &boss);
     std::cout << "7\n";
 
     eH->finished(&elements);
@@ -76,7 +71,14 @@ void Manager::update() {
         addGameObject<Boss>("../Assets/boss.png", 250, -30, 0, 1, 10, renderer, false);
     }
     shootCount--;
+    for (auto it = elements.begin();it !=elements.end();++it){
+        if (it.operator*()->isActive()){
+            std::cout << "1\n";
+            it.operator*()->Update();
+        }
+    }
     if (!eH->running()) deleteAll();
+
 }
 void Manager::render() {
     SDL_RenderClear(renderer);
@@ -89,36 +91,12 @@ void Manager::render() {
 
 template<class T, class... TArgs>
 void Manager::addGameObject(TArgs &&... args) {
-    auto *l = new T(std::forward<TArgs>(args)...);
-
-    if (std::is_same<T, Boss>::value){
-        std::cout <<"ADDED BOSS\n";
-        boss = reinterpret_cast<Boss*>(l);
-        boss->init(250, -149);
-        boss->setWidthHeight(80, 80);
-    }
-    else if (std::is_same<T, Enemy>::value) {
-
-        Enemy *enemy = reinterpret_cast<Enemy*>(l);
-        std::cout <<"ADDED Enemy\n";
-
-        //enemy->getDirection();
-        elements.emplace_back(enemy);
-        enemies.template emplace_back(enemy);
-        return;
-    }
-    else if (std::is_same<T, Laser>::value) {
-        Laser *laser = reinterpret_cast<Laser*>(l);
-        laser->setWidthHeight(1, 10);
-        elements.emplace_back(laser);
-        lasers.template emplace_back(laser);
-        return;
-    }
-    else if (std::is_same<T, Player>::value) player = reinterpret_cast<Player*>(l);
-
-
-    elements.emplace_back(reinterpret_cast<T*>(l));
-
+    std::shared_ptr<T> l = std::make_shared<T>(std::forward<TArgs>(args)...);
+    if (std::is_same<T, Boss>::value) boss = std::dynamic_pointer_cast<Boss>(l);
+    else if (std::is_same<T, Enemy>::value) enemies.emplace_back(std::dynamic_pointer_cast<Enemy>(l));
+    else if (std::is_same<T, Laser>::value) lasers.emplace_back(std::dynamic_pointer_cast<Laser>(l));
+    else if (std::is_same<T, Player>::value) player = std::dynamic_pointer_cast<Player>(l);
+    elements.emplace_back(l);
 }
 
 void Manager::deleteNotActive() {
@@ -131,33 +109,18 @@ void Manager::deleteNotActive() {
             std::remove_if(lasers.begin(), lasers.end(), [](auto & o){
                 return !o->isActive();}),
             lasers.end());
-    for(auto it = elements.begin();it !=elements.end();++it){
-        if (!it.operator*()->isActive()){
-            it.operator*()->setCanFree();
-
-        }
-    }
     elements.erase(
             std::remove_if(elements.begin(), elements.end(), [](auto & o){
                 return !o->isActive();}),
             elements.end());
 
 }
-void Manager::deleteAll(){
-    elements.clear();
-    for(Enemy *e: enemies){
-        if (e->isActive()) e->setNotActive();
-    }
-    for(Laser *l: lasers) {
-        if(l->isActive())l->setNotActive();
-    }
-    if (!player->isActive()) player->setNotActive();
-    if (!boss->isActive()) boss->setNotActive();
 
-    std::cout <<"all deleted\n";
+void Manager::deleteAll(){
+    std::for_each(elements.begin(), elements.end(), [](std::shared_ptr<GameObject> &ob) { if (ob->isActive()) ob->setNotActive(); });
+    elements.clear();
     enemies.clear();
     lasers.clear();
+    std::cout <<"all deleted\n";
+
 }
-
-
-

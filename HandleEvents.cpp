@@ -5,7 +5,7 @@
 #include "HandleEvents.h"
 //HandleEvents::HandleEvents() {}
 
-void HandleEvents::input(Player *player) {
+void HandleEvents::input(std::shared_ptr<Player> *player) {
     SDL_Event event;
     if(SDL_PollEvent(&event))
     {
@@ -18,16 +18,16 @@ void HandleEvents::input(Player *player) {
                     isShooting = true;
                     break;
                 case SDLK_s:
-                    player->yVel = 1;
+                    player->operator*().yVel = 1;
                     break;
                 case SDLK_w:
-                    player->yVel = -1;
+                    player->operator*().yVel = -1;
                     break;
                 case SDLK_d:
-                    player->xVel = 1;
+                    player->operator*().xVel = 1;
                     break;
                 case SDLK_a:
-                    player->xVel = -1;
+                    player->operator*().xVel = -1;
                     break;
                 case SDLK_ESCAPE:
                     isRunning = false;
@@ -43,16 +43,16 @@ void HandleEvents::input(Player *player) {
                     isShooting = false;
                     break;
                 case SDLK_s:
-                    if (player->yVel == 1) player->yVel = 0;
+                    if (player->operator*().yVel == 1) player->operator*().yVel = 0;
                     break;
                 case SDLK_w:
-                    if (player->yVel == -1) player->yVel = 0;
+                    if (player->operator*().yVel == -1) player->operator*().yVel = 0;
                     break;
                 case SDLK_d:
-                    if (player->xVel == 1)player->xVel = 0;
+                    if (player->operator*().xVel == 1)player->operator*().xVel = 0;
                     break;
                 case SDLK_a:
-                    if (player->xVel == -1) player->xVel = 0;
+                    if (player->operator*().xVel == -1) player->operator*().xVel = 0;
                     break;
             }
         }
@@ -66,11 +66,11 @@ void HandleEvents::input(Player *player) {
 
 }
 
-void HandleEvents::collision(std::vector<Enemy*> *e, std::vector<Laser*> *l, Player *player, Boss *boss) {
+void HandleEvents::collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector<std::shared_ptr<Laser>> *l, std::shared_ptr<Player> *player, std::shared_ptr<Boss> *boss) {
     if(killCount >=1) killCount = 0;
-    for(Laser *laser: *l){
+    for(auto laser: *l){
         if (laser->isActive() && !laser->isEnemy()){
-            for (Enemy *enemy : *e) {
+            for (auto enemy : *e) {
                 if(enemy->isActive() && enemy->hit(laser->getX(), laser->getY())){
                     laser->setNotActive();
                     enemy->setNotActive();
@@ -78,20 +78,20 @@ void HandleEvents::collision(std::vector<Enemy*> *e, std::vector<Laser*> *l, Pla
                     ++kills;
                 }
             }
-            if (boss->isActive()&&boss->hit(laser->getX(), laser->getY())) {
+            if (boss->operator*().isActive()&&boss->operator*().hit(laser->getX(), laser->getY())) {
                 laser->setNotActive();
             }
         }
         else if (laser->isActive() && laser->isEnemy()){
-            if (player->isActive() && player->hit(laser->getX(), laser->getY())) {
-                player->setNotActive();
+            if (player->operator*().isActive() && player->operator*().hit(laser->getX(), laser->getY())) {
+                player->operator*().setNotActive();
                 laser->setNotActive();
             }
         }
     }
 }
 
-void HandleEvents::finished(std::vector<GameObject*> *array) {
+void HandleEvents::finished(std::vector<std::shared_ptr<GameObject>> *array) {
 
     for(auto it = array->begin();it !=array->end();++it) {
         if(!it.operator*()->isBackground() && it.operator*()->isActive()&&it.operator*()->getY() >= 650) {

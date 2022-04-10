@@ -6,8 +6,8 @@
 
 Boss::Boss(const char *texturesheet, int x, int y, int patternX, int patternY, int maxY, SDL_Renderer *renderer, bool b)
         : Enemy(texturesheet, x, y, patternX, patternY, maxY, renderer, b) {
-    setWidthHeight(128, 128);
-    getDirection();
+    init(250, -149);
+    setWidthHeight(80, 80);
     shootCool = 100;
 
 }

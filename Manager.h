@@ -28,11 +28,11 @@ private:
     SDL_Renderer *renderer;
     int enemyTimer = 0;
     int shootCount = 0;
-    Player *player;
-    Boss *boss;
-    std::vector<GameObject*> elements;
-    std::vector<Enemy*> enemies;
-    std::vector<Laser*> lasers;
+    std::shared_ptr<Player> player;
+    std::shared_ptr<Boss> boss;
+    std::vector<std::shared_ptr<GameObject>> elements;
+    std::vector<std::shared_ptr<Enemy>> enemies;
+    std::vector<std::shared_ptr<Laser>> lasers;
     void deleteAll();
     int added = 0;
     void resetArray();

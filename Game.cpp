@@ -3,8 +3,7 @@
 //
 
 #include "Game.h"
-Manager *manager = nullptr;
-int count = 1000;
+std::shared_ptr<Manager> manager = nullptr;
 
 Game::Game() {};
 
@@ -29,19 +28,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         }
         SDL_Init(SDL_INIT_VIDEO);
         if (TTF_Init() < 0) std::cout << "ERROR: " << TTF_GetError() << std::endl;
-
         isRunning = true;
     }
-    manager = new Manager(renderer);
-
-
+    manager = std::make_shared<Manager>(renderer);
 }
-
-void Game::handleEvents() {
-
-
-}
-
 void Game::update() {
     isRunning = manager->eH->running();
     manager->update();

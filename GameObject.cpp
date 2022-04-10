@@ -14,12 +14,10 @@ GameObject::GameObject(const char *texturesheet, int x, int y, SDL_Renderer *ren
 GameObject::~GameObject() {}
 
 void GameObject::Update() {
-
     srcRect.h = height;
     srcRect.w = width;
     srcRect.x = 0;
     srcRect.y = 0;
-
     destRect.x = xpos;
     destRect.y = ypos;
     destRect.w = srcRect.w * 2;
