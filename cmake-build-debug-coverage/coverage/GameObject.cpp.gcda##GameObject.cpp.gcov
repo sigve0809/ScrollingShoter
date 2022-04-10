@@ -1,0 +1,64 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/GameObject.cpp
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\GameObject.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\GameObject.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Sigve Langva on 3/30/2022.
+        -:    3://
+        -:    4:
+        -:    5:#include "GameObject.h"
+        -:    6:
+function _ZN10GameObjectC2EPKciiP12SDL_Rendererb called 281 returned 100% blocks executed 100%
+      281:    7:GameObject::GameObject(const char *texturesheet, int x, int y, SDL_Renderer *renderer, bool b) {
+      281:    8:    objTexture = TextureManager::LoadTexture(texturesheet, renderer);
+      281:    8-block  0
+call    0 returned 281
+      281:    9:    xpos = x;
+      281:   10:    ypos = y;
+      281:   11:    background = b;
+      281:   12:}
+        -:   13:
+function _ZN10GameObjectD2Ev called 238 returned 100% blocks executed 100%
+      238:   14:GameObject::~GameObject() {}
+        -:   15:
+function _ZN10GameObject6UpdateEv called 42850 returned 100% blocks executed 100%
+    42850:   16:void GameObject::Update() {
+        -:   17:
+    42850:   18:    srcRect.h = height;
+    42850:   19:    srcRect.w = width;
+    42850:   20:    srcRect.x = 0;
+    42850:   21:    srcRect.y = 0;
+        -:   22:
+    42850:   23:    destRect.x = xpos;
+    42850:   24:    destRect.y = ypos;
+    42850:   25:    destRect.w = srcRect.w * 2;
+    42850:   26:    destRect.h = srcRect.h * 2;
+        -:   27:
+        -:   28:
+        -:   29:
+    42850:   30:}
+        -:   31:
+function _ZN10GameObject6RenderEP12SDL_Renderer called 35074 returned 100% blocks executed 100%
+    35074:   32:void GameObject::Render(SDL_Renderer *renderer) {
+    35074:   33:    SDL_RenderCopy(renderer, objTexture, NULL, &destRect);
+    35074:   33-block  0
+call    0 returned 35074
+    35074:   34:}
+        -:   35:
+function _ZN10GameObject17destroyGameObjectEv called 280 returned 100% blocks executed 100%
+      280:   36:void GameObject::destroyGameObject() {
+      280:   37:    SDL_DestroyTexture(objTexture);
+      280:   37-block  0
+call    0 returned 280
+      280:   38:}
+        -:   39:
+function _ZN10GameObject14setWidthHeightEii called 534 returned 100% blocks executed 100%
+      534:   40:void GameObject::setWidthHeight(int w, int h) {
+      534:   41:    width = w;
+      534:   42:    height = h;
+      534:   43:}
+        -:   44:
+        -:   45:
+        -:   46:
+        -:   47:
+        -:   48:

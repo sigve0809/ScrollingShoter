@@ -1,0 +1,51 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/Game.h
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Sigve Langva on 3/30/2022.
+        -:    3://
+        -:    4:
+        -:    5:#ifndef PG4400_V22_KNR1033_GAME_H
+        -:    6:#define PG4400_V22_KNR1033_GAME_H
+        -:    7:
+        -:    8:#include <iostream>
+        -:    9:#include <SDL2/SDL.h>
+        -:   10:#include <SDL_image.h>
+        -:   11:#include <memory>
+        -:   12://#include "TextureManager.h"
+        -:   13://#include "GameObject.h"
+        -:   14:#include "Manager.h"
+        -:   15://#include "Laser.h"
+        -:   16:#include <vector>
+        -:   17:#include <SDL_ttf.h>
+        -:   18:
+        -:   19:class Game {
+        -:   20:public:
+        -:   21:    Game();
+        -:   22:    ~Game();
+        -:   23:
+        -:   24:    void init(const char *title, int xpos, int ypos, int width, int height, bool fullscreen);
+        -:   25:
+        -:   26:    void handleEvents();
+        -:   27:    void update();
+        -:   28:    void render();
+        -:   29:    void clean();
+function _ZNK4Game7runningEv called 5180 returned 100% blocks executed 100%
+     5180:   30:    bool running() const{
+     5180:   31:        return isRunning;
+     5180:   31-block  0
+        -:   32:    }
+        -:   33:    static SDL_Renderer *renderer;
+        -:   34:
+        -:   35:private:
+        -:   36:    bool isRunning;
+        -:   37:    SDL_Window *window;
+        -:   38:    void shooting();
+        -:   39:    bool isShooting = false;
+        -:   40:
+        -:   41:    void eShooting(Enemy *e);
+        -:   42:};
+        -:   43:
+        -:   44:
+        -:   45:#endif //PG4400_V22_KNR1033_GAME_H

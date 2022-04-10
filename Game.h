@@ -11,10 +11,10 @@
 #include <memory>
 //#include "TextureManager.h"
 //#include "GameObject.h"
-#include "Enemy.h"
-#include "Player.h"
+#include "Manager.h"
 //#include "Laser.h"
 #include <vector>
+#include <SDL_ttf.h>
 
 class Game {
 public:
@@ -27,13 +27,9 @@ public:
     void update();
     void render();
     void clean();
-    void addEnemy(int i);
-    bool running(){
+    bool running() const{
         return isRunning;
     }
-
-
-
     static SDL_Renderer *renderer;
 
 private:

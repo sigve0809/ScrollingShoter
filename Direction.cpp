@@ -22,7 +22,12 @@ int Direction::getY() const {
 void Direction::setY() {
     Direction::y *= -1;
 }
-
+void Direction::giveXval(int xV){
+    x = xV;
+}
+void Direction::giveYval(int yV){
+    y = yV;
+}
 int Direction::getMaxY() {
     return maxY;
 }

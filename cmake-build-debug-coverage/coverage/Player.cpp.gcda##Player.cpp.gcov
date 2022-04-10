@@ -1,0 +1,104 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/Player.cpp
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Player.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Player.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Sigve Langva on 3/30/2022.
+        -:    3://
+        -:    4:
+        -:    5:#include "Player.h"
+function _ZN6PlayerC2EPKciiP12SDL_Rendererb called 1 returned 100% blocks executed 80%
+        1:    6:Player::Player(const char *texturesheet, int i, int i1, SDL_Renderer *renderer, bool b) : GameObject(texturesheet, i, i1, renderer, b) {
+        1:    6-block  0
+call    0 returned 1
+        1:    7:    setWidthHeight(13, 60);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:    8:    srcRect.x = 30;
+        1:    9:    srcRect.y = 0;
+        1:   10:}
+        1:   10-block  0
+    $$$$$:   10-block  1
+call    0 never executed
+        -:   11:
+        -:   12:
+        -:   13:
+function _ZN6Player6UpdateEv called 5084 returned 100% blocks executed 95%
+     5084:   14:void Player::Update() {
+        -:   15:
+     5084:   16:    srcRect.h = 76;
+     5084:   17:    srcRect.w = 150/5;
+     5084:   18:    if (counter <= 0){
+     5084:   18-block  0
+branch  0 taken 508 (fallthrough)
+branch  1 taken 4576
+      508:   19:        if (srcRect.x == 90) up =false;
+      508:   19-block  0
+branch  0 taken 127 (fallthrough)
+branch  1 taken 381
+      127:   19-block  1
+      381:   20:        else if(srcRect.x == 30) up = true;
+      381:   20-block  0
+branch  0 taken 127 (fallthrough)
+branch  1 taken 254
+      127:   20-block  1
+      508:   21:        if (up) srcRect.x += 30;
+      508:   21-block  0
+branch  0 taken 254 (fallthrough)
+branch  1 taken 254
+      254:   21-block  1
+      254:   22:        else srcRect.x -= 30;
+      254:   22-block  0
+      508:   23:        counter = 10;
+      508:   23-block  0
+        -:   24:    }
+        -:   25:
+        -:   26:    //std::cout << xpos << std::endl;
+        -:   27:
+     5084:   28:    destRect.x = xpos;
+     5084:   29:    destRect.y = ypos;
+        -:   30:
+     5084:   31:    destRect.w = getWidth()*2;
+     5084:   31-block  0
+call    0 returned 5084
+     5084:   32:    destRect.h = getHeight()*2;
+call    0 returned 5084
+        -:   33:    //GameObject::Update();
+     5084:   34:    xpos += xVel*2;
+     5084:   35:    ypos += yVel*2;
+    5084*:   36:    if(ypos < 5) setYpos(5);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 5084
+    %%%%%:   36-block  0
+call    2 never executed
+     5084:   37:    if(ypos > 542) setYpos(542);
+     5084:   37-block  0
+branch  0 taken 27 (fallthrough)
+branch  1 taken 5057
+       27:   37-block  1
+call    2 returned 27
+     5084:   38:    if (xpos < -65) setXpos(805);
+     5084:   38-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 5083
+        1:   38-block  1
+call    2 returned 1
+     5084:   39:    if (xpos > 810) setXpos(-60);
+     5084:   39-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 5083
+        1:   39-block  1
+call    2 returned 1
+     5084:   40:    counter--;
+        -:   41:
+        -:   42:
+        -:   43:
+     5084:   44:}
+        -:   45:
+function _ZN6Player6RenderEP12SDL_Renderer called 5083 returned 100% blocks executed 100%
+     5083:   46:void Player::Render(SDL_Renderer *renderer) {
+     5083:   47:    SDL_RenderCopy(renderer, objTexture, &srcRect, &destRect);
+     5083:   47-block  0
+call    0 returned 5083
+     5083:   48:}

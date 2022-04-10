@@ -4,7 +4,7 @@
 
 #include "Laser.h"
 
-Laser::Laser(const char *texturesheet, int x, int y, bool enemy, SDL_Renderer *renderer) : GameObject(texturesheet, x, y, renderer), enemy(enemy) {}
+Laser::Laser(const char *texturesheet, int x, int y, bool enemy, SDL_Renderer *renderer, bool b) : GameObject(texturesheet, x, y, renderer, b), enemy(enemy) { setWidthHeight(1, 10);}
 
 void Laser::Update() {
     GameObject::Update();

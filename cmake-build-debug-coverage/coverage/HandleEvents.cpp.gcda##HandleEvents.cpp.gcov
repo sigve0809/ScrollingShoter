@@ -1,0 +1,336 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/HandleEvents.cpp
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\HandleEvents.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\HandleEvents.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Sigve Langva on 4/5/2022.
+        -:    3://
+        -:    4:
+        -:    5:#include "HandleEvents.h"
+        -:    6://HandleEvents::HandleEvents() {}
+        -:    7:
+function _ZN12HandleEvents5inputEP6Player called 5179 returned 100% blocks executed 97%
+     5179:    8:void HandleEvents::input(Player *player) {
+        -:    9:    SDL_Event event;
+     5179:   10:    if(SDL_PollEvent(&event))
+     5179:   10-block  0
+call    0 returned 5179
+branch  1 taken 5179 (fallthrough)
+branch  2 taken 0 (throw)
+     5179:   10-block  1
+branch  3 taken 708 (fallthrough)
+branch  4 taken 4471
+        -:   11:    {
+        -:   12:// Sjekk om det var en key-event
+      708:   13:        if (event.type == SDL_KEYDOWN)
+      708:   13-block  0
+branch  0 taken 295 (fallthrough)
+branch  1 taken 413
+        -:   14:        {
+      295:   15:            switch (event.key.keysym.sym) {
+      295:   15-block  0
+branch  0 taken 48
+branch  1 taken 8
+branch  2 taken 11
+branch  3 taken 102
+branch  4 taken 126
+branch  5 taken 0
+branch  6 taken 0
+       48:   16:                case SDLK_SPACE:
+        -:   17:
+       48:   18:                    isShooting = true;
+       48:   19:                    break;
+       48:   19-block  0
+        8:   20:                case SDLK_s:
+        8:   21:                    player->yVel = 1;
+        8:   22:                    break;
+        8:   22-block  0
+       11:   23:                case SDLK_w:
+       11:   24:                    player->yVel = -1;
+       11:   25:                    break;
+       11:   25-block  0
+      102:   26:                case SDLK_d:
+      102:   27:                    player->xVel = 1;
+      102:   28:                    break;
+      102:   28-block  0
+      126:   29:                case SDLK_a:
+      126:   30:                    player->xVel = -1;
+      126:   31:                    break;
+      126:   31-block  0
+    #####:   32:                case SDLK_ESCAPE:
+    #####:   33:                    isRunning = false;
+    #####:   34:                    break;
+    %%%%%:   34-block  0
+        -:   35:            }
+        -:   36:        }
+      708:   37:        if (event.type == SDL_KEYUP)
+      708:   37-block  0
+branch  0 taken 101 (fallthrough)
+branch  1 taken 607
+        -:   38:        {
+        -:   39:// Sjekk om brukeren trykket Escape
+        -:   40:
+      101:   41:            switch (event.key.keysym.sym) {
+      101:   41-block  0
+branch  0 taken 12
+branch  1 taken 8
+branch  2 taken 11
+branch  3 taken 43
+branch  4 taken 27
+branch  5 taken 0
+       12:   42:                case SDLK_SPACE:
+       12:   43:                    isShooting = false;
+       12:   44:                    break;
+       12:   44-block  0
+        8:   45:                case SDLK_s:
+        8:   46:                    if (player->yVel == 1) player->yVel = 0;
+        8:   46-block  0
+branch  0 taken 8 (fallthrough)
+branch  1 taken 0
+        8:   46-block  1
+        8:   47:                    break;
+        8:   47-block  0
+       11:   48:                case SDLK_w:
+       11:   49:                    if (player->yVel == -1) player->yVel = 0;
+       11:   49-block  0
+branch  0 taken 11 (fallthrough)
+branch  1 taken 0
+       11:   49-block  1
+       11:   50:                    break;
+       11:   50-block  0
+       43:   51:                case SDLK_d:
+       43:   52:                    if (player->xVel == 1)player->xVel = 0;
+       43:   52-block  0
+branch  0 taken 42 (fallthrough)
+branch  1 taken 1
+       42:   52-block  1
+       43:   53:                    break;
+       43:   53-block  0
+       27:   54:                case SDLK_a:
+       27:   55:                    if (player->xVel == -1) player->xVel = 0;
+       27:   55-block  0
+branch  0 taken 22 (fallthrough)
+branch  1 taken 5
+       22:   55-block  1
+       27:   56:                    break;
+       27:   56-block  0
+        -:   57:            }
+        -:   58:        }
+        -:   59:
+        -:   60:// Sjekk om brukeren trykket krysset (X) i vindu
+      607:   61:        else if (event.type == SDL_QUIT)
+      607:   61-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 606
+        -:   62:        {
+        1:   63:            isRunning = false; // avslutt
+        1:   63-block  0
+        -:   64:        }
+        -:   65:    }
+        -:   66:
+     5179:   67:}
+     5179:   67-block  0
+        -:   68:
+function _ZN12HandleEvents9collisionEPSt5arrayIP5EnemyLy6EEPS0_IP5LaserLy14EEP6PlayerP4Boss called 5179 returned 100% blocks executed 100%
+     5179:   69:void HandleEvents::collision(std::array<Enemy*, 6> *e, std::array<Laser*, 14> *l, Player *player, Boss *boss) {
+     5179:   70:    if(killCount >=1) killCount = 0;
+     5179:   70-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 5174
+        5:   70-block  1
+    77685:   71:    for(Laser *laser: *l){
+     5179:   71-block  0
+call    0 returned 5179
+call    1 returned 5179
+    72506:   71-block  1
+    77685:   71-block  2
+branch  2 taken 72506
+branch  3 taken 5179 (fallthrough)
+    72506:   72:        if (laser->isActive() && !laser->isEnemy()){
+    72506:   72-block  0
+call    0 returned 72506
+branch  1 taken 24845 (fallthrough)
+branch  2 taken 47661
+    24845:   72-block  1
+call    3 returned 24845
+branch  4 taken 10535 (fallthrough)
+branch  5 taken 14310
+    10535:   72-block  2
+    61971:   72-block  3
+    72506:   72-block  4
+branch  6 taken 10535 (fallthrough)
+branch  7 taken 61971
+    73745:   73:            for (Enemy *enemy : *e) {
+    10535:   73-block  0
+call    0 returned 10535
+call    1 returned 10535
+    63210:   73-block  1
+    73745:   73-block  2
+branch  2 taken 63210
+branch  3 taken 10535 (fallthrough)
+    63210:   74:                if(enemy->isActive() && enemy->hit(laser->getX(), laser->getY())){
+    63210:   74-block  0
+call    0 returned 63210
+branch  1 taken 1101 (fallthrough)
+branch  2 taken 62109
+     1101:   74-block  1
+call    3 returned 1101
+call    4 returned 1101
+call    5 returned 1101
+branch  6 taken 5 (fallthrough)
+branch  7 taken 1096
+        5:   74-block  2
+    63205:   74-block  3
+    63210:   74-block  4
+branch  8 taken 5 (fallthrough)
+branch  9 taken 63205
+        5:   75:                    laser->setNotActive();
+        5:   75-block  0
+call    0 returned 5
+        5:   76:                    enemy->setNotActive();
+call    0 returned 5
+        5:   77:                    ++killCount;
+        5:   78:                    ++kills;
+        -:   79:                }
+        -:   80:            }
+    10535:   81:            if (boss->isActive()&&boss->hit(laser->getX(), laser->getY())) {
+    10535:   81-block  0
+call    0 returned 10535
+branch  1 taken 7499 (fallthrough)
+branch  2 taken 3036
+     7499:   81-block  1
+call    3 returned 7499
+call    4 returned 7499
+call    5 returned 7499
+branch  6 taken 50 (fallthrough)
+branch  7 taken 7449
+       50:   81-block  2
+    10485:   81-block  3
+    10535:   81-block  4
+branch  8 taken 50 (fallthrough)
+branch  9 taken 10485
+       50:   82:                laser->setNotActive();
+       50:   82-block  0
+call    0 returned 50
+        -:   83:            }
+        -:   84:        }
+    61971:   85:        else if (laser->isActive() && laser->isEnemy()){
+    61971:   85-block  0
+call    0 returned 61971
+branch  1 taken 14310 (fallthrough)
+branch  2 taken 47661
+    14310:   85-block  1
+call    3 returned 14310
+branch  4 taken 14310 (fallthrough)
+branch  5 taken 0
+    14310:   85-block  2
+    47661:   85-block  3
+    61971:   85-block  4
+branch  6 taken 14310 (fallthrough)
+branch  7 taken 47661
+    14310:   86:            if (player->isActive() && player->hit(laser->getX(), laser->getY())) {
+    14310:   86-block  0
+call    0 returned 14310
+branch  1 taken 14187 (fallthrough)
+branch  2 taken 123
+    14187:   86-block  1
+call    3 returned 14187
+call    4 returned 14187
+call    5 returned 14187
+branch  6 taken 1 (fallthrough)
+branch  7 taken 14186
+        1:   86-block  2
+    14309:   86-block  3
+    14310:   86-block  4
+branch  8 taken 1 (fallthrough)
+branch  9 taken 14309
+        1:   87:                player->setNotActive();
+        1:   87-block  0
+call    0 returned 1
+        1:   88:                laser->setNotActive();
+call    0 returned 1
+        -:   89:            }
+        -:   90:        }
+        -:   91:    }
+        -:   92:
+     5179:   93:}
+        -:   94:
+function _ZN12HandleEvents8finishedEPSt6vectorIP10GameObjectSaIS2_EE called 5179 returned 100% blocks executed 100%
+     5179:   95:void HandleEvents::finished(std::vector<GameObject*> *array) {
+        -:   96:
+    53238:   97:    for(auto it = array->begin();it !=array->end();++it) {
+     5179:   97-block  0
+call    0 returned 5179
+    48059:   97-block  1
+call    1 returned 48059
+    53238:   97-block  2
+call    2 returned 53238
+call    3 returned 53238
+branch  4 taken 48059
+branch  5 taken 5179 (fallthrough)
+    48059:   98:        if(!it.operator*()->isBackground() && it.operator*()->isActive()&&it.operator*()->getY() >= 650) {
+    48059:   98-block  0
+call    0 returned 48059
+call    1 returned 48059
+branch  2 taken 37703 (fallthrough)
+branch  3 taken 10356
+    37703:   98-block  1
+call    4 returned 37703
+call    5 returned 37703
+branch  6 taken 37636 (fallthrough)
+branch  7 taken 67
+    37636:   98-block  2
+call    8 returned 37636
+call    9 returned 37636
+branch 10 taken 122 (fallthrough)
+branch 11 taken 37514
+      122:   98-block  3
+    47937:   98-block  4
+    48059:   98-block  5
+branch 12 taken 122 (fallthrough)
+branch 13 taken 47937
+      122:   99:            it.operator*()->setNotActive();
+      122:   99-block  0
+call    0 returned 122
+call    1 returned 122
+branch  2 taken 122 (fallthrough)
+branch  3 taken 0 (throw)
+        -:  100:        }
+    47937:  101:        else if (!it.operator*()->isBackground() && it.operator*()->isActive() && it.operator*()->getY() <= -150) it.operator*()->setNotActive();
+    47937:  101-block  0
+call    0 returned 47937
+call    1 returned 47937
+branch  2 taken 37581 (fallthrough)
+branch  3 taken 10356
+    37581:  101-block  1
+call    4 returned 37581
+call    5 returned 37581
+branch  6 taken 37514 (fallthrough)
+branch  7 taken 67
+    37514:  101-block  2
+call    8 returned 37514
+call    9 returned 37514
+branch 10 taken 58 (fallthrough)
+branch 11 taken 37456
+       58:  101-block  3
+    47879:  101-block  4
+    47937:  101-block  5
+branch 12 taken 58 (fallthrough)
+branch 13 taken 47879
+       58:  101-block  6
+call   14 returned 58
+call   15 returned 58
+branch 16 taken 58 (fallthrough)
+branch 17 taken 0 (throw)
+        -:  102:    }
+     5179:  103:}
+     5179:  103-block  0
+        -:  104:
+        -:  105:
+        -:  106:
+        -:  107:
+        -:  108:
+        -:  109:
+        -:  110:
+        -:  111:
+        -:  112:

@@ -1,0 +1,56 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/main.cpp
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:#include "Game.h"
+        -:    3:#include <SDL.h>
+        -:    4:Game *game = nullptr;
+function SDL_main called 1 returned 100% blocks executed 94%
+        1:    5:int main(int argc, char *argv[]) {
+        1:    6:    const int FPS = 100;
+        1:    7:    const int frameDelay = 1000 / FPS;
+        -:    8:
+        -:    9:    Uint32 frameStart;
+        -:   10:    int frameTime;
+        -:   11:
+        1:   12:    game = new Game();
+        1:   12-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   12-block  1
+call    4 never executed
+        1:   13:    game->init("Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
+        1:   13-block  0
+call    0 returned 1
+        -:   14:
+     5180:   15:    while (game->running()){
+     5180:   15-block  0
+call    0 returned 5180
+branch  1 taken 5179
+branch  2 taken 1 (fallthrough)
+     5179:   16:        frameStart = SDL_GetTicks();
+     5179:   16-block  0
+call    0 returned 5179
+     5179:   17:        game->handleEvents();
+call    0 returned 5179
+     5179:   18:        game->update();
+call    0 returned 5179
+     5179:   19:        game->render();
+call    0 returned 5179
+     5179:   20:        frameTime = SDL_GetTicks() - frameStart;
+call    0 returned 5179
+     5179:   21:        if (frameDelay > frameTime) SDL_Delay(frameDelay - frameTime);
+branch  0 taken 4931 (fallthrough)
+branch  1 taken 248
+     4931:   21-block  0
+call    2 returned 4931
+        -:   22:    }
+        1:   23:    game->clean();
+        1:   23-block  0
+call    0 returned 1
+        1:   24:    return 0;
+        1:   24-block  0
+        -:   25:}

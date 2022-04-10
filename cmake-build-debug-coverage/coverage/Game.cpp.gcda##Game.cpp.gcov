@@ -1,0 +1,130 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/Game.cpp
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Game.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Game.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Sigve Langva on 3/30/2022.
+        -:    3://
+        -:    4:
+        -:    5:#include "Game.h"
+        -:    6:Manager *manager = nullptr;
+        -:    7:int count = 1000;
+        -:    8:
+function _ZN4GameC2Ev called 1 returned 100% blocks executed 100%
+        1:    9:Game::Game() {};
+        -:   10:
+function _ZN4GameD2Ev called 0 returned 0% blocks executed 0%
+    #####:   11:Game::~Game() {};
+        -:   12:
+        -:   13:SDL_Renderer *Game::renderer = nullptr;
+        -:   14:
+function _ZN4Game4initEPKciiiib called 1 returned 100% blocks executed 79%
+        1:   15:void Game::init(const char *title, int xpos, int ypos, int width, int height, bool fullscreen) {
+        1:   16:    int flags = 0;
+       1*:   17:    if (fullscreen) flags = SDL_WINDOW_FULLSCREEN;
+        1:   17-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   17-block  1
+        -:   18:
+        1:   19:    if (SDL_Init(SDL_INIT_EVERYTHING) == 0){
+        1:   19-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0
+        1:   20:        std::cout << "subsystem initialised" << std::endl;
+        1:   20-block  0
+call    0 returned 1
+call    1 returned 1
+        1:   21:        window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
+call    0 returned 1
+        1:   22:        if (window){
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   23:            std::cout << "window created" << std::endl;
+        1:   23-block  0
+call    0 returned 1
+call    1 returned 1
+        -:   24:        }
+        1:   25:        renderer = SDL_CreateRenderer(window, -1, 0);
+        1:   25-block  0
+call    0 returned 1
+        1:   26:        if (renderer){
+branch  0 taken 1 (fallthrough)
+branch  1 taken 0
+        1:   27:            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+        1:   27-block  0
+call    0 returned 1
+        1:   28:            std::cout << "renderer created" << std::endl;
+call    0 returned 1
+call    1 returned 1
+        -:   29:        }
+        1:   30:        SDL_Init(SDL_INIT_VIDEO);
+        1:   30-block  0
+call    0 returned 1
+       1*:   31:        if (TTF_Init() < 0) std::cout << "ERROR: " << TTF_GetError() << std::endl;
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   31-block  0
+call    3 never executed
+call    4 never executed
+call    5 never executed
+call    6 never executed
+        -:   32:
+        1:   33:        isRunning = true;
+        1:   33-block  0
+        -:   34:    }
+        1:   35:    manager = new Manager(renderer);
+        1:   35-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   35-block  1
+call    4 never executed
+        -:   36:
+        -:   37:
+        1:   38:}
+        1:   38-block  0
+        -:   39:
+function _ZN4Game12handleEventsEv called 5179 returned 100% blocks executed 100%
+     5179:   40:void Game::handleEvents() {
+        -:   41:
+        -:   42:
+     5179:   43:}
+        -:   44:
+function _ZN4Game6updateEv called 5179 returned 100% blocks executed 100%
+     5179:   45:void Game::update() {
+     5179:   46:    isRunning = manager->eH->running();
+     5179:   46-block  0
+call    0 returned 5179
+     5179:   47:    manager->update();
+call    0 returned 5179
+     5179:   48:}
+        -:   49:
+function _ZN4Game6renderEv called 5179 returned 100% blocks executed 100%
+     5179:   50:void Game::render() {
+     5179:   51:    manager->render();
+     5179:   51-block  0
+call    0 returned 5179
+     5179:   52:}
+        -:   53:
+function _ZN4Game5cleanEv called 1 returned 100% blocks executed 100%
+        1:   54:void Game::clean() {
+        1:   55:    SDL_DestroyWindow(window);
+        1:   55-block  0
+call    0 returned 1
+        1:   56:    SDL_DestroyRenderer(renderer);
+call    0 returned 1
+        1:   57:    SDL_Quit();
+call    0 returned 1
+        1:   58:    std::cout << "Game Cleaned" << std::endl;
+call    0 returned 1
+call    1 returned 1
+        1:   59:}
+        -:   60:
+        -:   61:
+        -:   62:
+        -:   63:
+        -:   64:

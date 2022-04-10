@@ -4,10 +4,11 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject(const char *texturesheet, int x, int y, SDL_Renderer *renderer) {
+GameObject::GameObject(const char *texturesheet, int x, int y, SDL_Renderer *renderer, bool b) {
     objTexture = TextureManager::LoadTexture(texturesheet, renderer);
     xpos = x;
     ypos = y;
+    background = b;
 }
 
 GameObject::~GameObject() {}
@@ -40,6 +41,7 @@ void GameObject::setWidthHeight(int w, int h) {
     width = w;
     height = h;
 }
+
 
 
 

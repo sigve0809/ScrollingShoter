@@ -11,14 +11,12 @@
 
 class Player : public GameObject{
 public:
-    Player(const char string[25], int i, int i1, SDL_Renderer *renderer);
+    Player(const char *texturesheet, int i, int i1, SDL_Renderer *renderer, bool b);
 
 
-    Laser *shoot(SDL_Renderer *renderer);
     bool hit(int x, int y){
         if(x > xpos && x< xpos+(getWidth()*2) && y > ypos && y< ypos+(getHeight()*2)) {
             std::cout << "In\n";
-            alive = false;
             alive = false;
             return true;
         }
@@ -31,6 +29,10 @@ public:
 private:
     bool alive = true;
     int cannon = 1;
+    bool up = true;
+    int destNr = 1;
+    int check = 0;
+    int counter = 10;
 };
 
 

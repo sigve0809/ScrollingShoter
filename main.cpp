@@ -3,7 +3,7 @@
 #include <SDL.h>
 Game *game = nullptr;
 int main(int argc, char *argv[]) {
-    const int FPS = 120;
+    const int FPS = 100;
     const int frameDelay = 1000 / FPS;
 
     Uint32 frameStart;

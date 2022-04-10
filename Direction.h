@@ -18,11 +18,13 @@ public:
 
     void setY();
     int getMaxY();
-
+    void giveXval(int xV);
+    void giveYval(int yV);
 private:
     int x;
     int y;
     int maxY;
+
 };
 
 

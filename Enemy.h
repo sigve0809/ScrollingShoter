@@ -16,30 +16,36 @@ public:
     //std::vector<std::shared_ptr<Direction>> patternVector;
 
 
-    Enemy(const char *texturesheet, int x, int y, int patternX, int patternY, int maxY, SDL_Renderer *renderer);
+    Enemy(const char *texturesheet, int x, int y, int patternX, int patternY, int maxY, SDL_Renderer *renderer, bool b);
 
-    Laser *shoot(SDL_Renderer *renderer);
 
     bool isAlive(){return alive;}
     void Update() override;
     void Render(SDL_Renderer *renderer) override;
-    bool hit(int x, int y){
+    virtual bool hit(int x, int y){
         if(x > xpos && x< xpos+(getWidth()*2) && y > ypos && y< ypos+(getHeight()*2)) {
-            std::cout << "In\n";
             alive = false;
             return true;
         }
         return false;
     }
+
     bool gunReady(){
         return canShoot;
     }
     void collide();
     void getDirection();
-private:
+    int getShootCol() {return shootCool;}
+    void setGunReady(){
+        canShoot = true;
+    }
+protected:
+    int shootCool = 0;
+
     std::shared_ptr<Direction> a;
-    int shootCool = 10;
+private:
     bool canShoot = true;
+
     bool alive = true;
     int pY;
     int pX;

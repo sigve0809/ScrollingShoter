@@ -1,0 +1,86 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/GameObject.h
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\HandleEvents.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\HandleEvents.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Sigve Langva on 3/30/2022.
+        -:    3://
+        -:    4:
+        -:    5:#ifndef PG4400_V22_KNR1033_GAMEOBJECT_H
+        -:    6:#define PG4400_V22_KNR1033_GAMEOBJECT_H
+        -:    7:
+        -:    8:#include <SDL.h>
+        -:    9:#include "TextureManager.h"
+        -:   10:#include <iostream>
+        -:   11:class GameObject {
+        -:   12:public:
+        -:   13:    GameObject(const char *texturesheet, int x, int y, SDL_Renderer *renderer, bool b);
+        -:   14:    ~GameObject();
+        -:   15:
+        -:   16:    virtual void Update();
+        -:   17:
+        -:   18:    virtual void Render(SDL_Renderer *renderer);
+        -:   19:
+        -:   20:    int yVel = 0;
+        -:   21:    int xVel = 0;
+        -:   22:    void setXpos(int pos){
+        -:   23:        xpos = pos;
+        -:   24:    }
+        -:   25:    void setYpos(int pos){
+        -:   26:        ypos = pos;
+        -:   27:    }
+function _ZN10GameObject4getYEv called 108531 returned 100% blocks executed 100%
+   108531:   28:    int getY(){
+   108531:   29:        return ypos;
+   108531:   29-block  0
+        -:   30:    }
+function _ZN10GameObject4getXEv called 23025 returned 100% blocks executed 100%
+    23025:   31:    int getX(){
+    23025:   32:        return xpos;
+    23025:   32-block  0
+        -:   33:    }
+        -:   34:    void destroyGameObject();
+        -:   35:    void setWidthHeight(int w, int h);
+function _ZN10GameObject8getWidthEv called 0 returned 0% blocks executed 0%
+    #####:   36:    int getWidth(){
+    #####:   37:        return width;
+    %%%%%:   37-block  0
+        -:   38:    }
+function _ZN10GameObject9getHeightEv called 0 returned 0% blocks executed 0%
+    #####:   39:    int getHeight(){
+    #####:   40:        return height;
+    %%%%%:   40-block  0
+        -:   41:    }
+function _ZN10GameObject8isActiveEv called 479972 returned 100% blocks executed 100%
+   479972:   42:    bool isActive(){
+   479972:   43:        return active;
+   479972:   43-block  0
+        -:   44:    }
+function _ZN10GameObject12isBackgroundEv called 95996 returned 100% blocks executed 100%
+    95996:   45:    bool isBackground(){return background;}
+    95996:   45-block  0
+function _ZN10GameObject12setNotActiveEv called 280 returned 100% blocks executed 100%
+      280:   46:    void setNotActive(){
+      280:   47:        destroyGameObject();
+      280:   47-block  0
+call    0 returned 280
+      280:   48:        active = false;
+      280:   49:    }
+        -:   50:    void setID(int x){id = x;}
+        -:   51:    int getID(){return id;}
+        -:   52:private:
+        -:   53:    int width = 32;
+        -:   54:    int height = 32;
+        -:   55:protected:
+        -:   56:    bool background;
+        -:   57:    bool active = true;
+        -:   58:    SDL_Texture *objTexture;
+        -:   59:    SDL_Rect srcRect, destRect;
+        -:   60:    int xpos;
+        -:   61:    int ypos;
+        -:   62:    int id = 0;
+        -:   63:
+        -:   64:};
+        -:   65:
+        -:   66:
+        -:   67:#endif //PG4400_V22_KNR1033_GAMEOBJECT_H

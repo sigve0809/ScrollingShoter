@@ -1,0 +1,953 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/Manager.cpp
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Manager.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Manager.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Sigve Langva on 4/5/2022.
+        -:    3://
+        -:    4:
+        -:    5:#include <functional>
+        -:    6:#include "Manager.h"
+        -:    7:#include "Background.h"
+        -:    8:
+        -:    9:
+function _ZN7ManagerC2EP12SDL_Renderer called 1 returned 100% blocks executed 57%
+        1:   10:Manager::Manager(SDL_Renderer *renderer) : renderer(renderer) {
+        1:   10-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        -:   11:
+        1:   12:    shootCount = 0;
+        -:   13:
+       15:   14:    for (int i = 0; i < 14; ++i) {
+        1:   14-block  0
+       15:   14-block  1
+branch  0 taken 14
+branch  1 taken 1 (fallthrough)
+       14:   15:        Enemy *e = new Enemy("../Assets/spaceship1.png", 0, 0, 1, 1, 400, renderer, false);
+       14:   15-block  0
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+       14:   15-block  1
+call    3 returned 14
+branch  4 taken 14 (fallthrough)
+branch  5 taken 0 (throw)
+    $$$$$:   15-block  2
+call    6 never executed
+       14:   16:        e->setNotActive();
+       14:   16-block  0
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+       14:   17:        e->setWidthHeight(32, 32);
+       14:   17-block  0
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+       14:   18:        if (i<6) enemies[i] = e;
+       14:   18-block  0
+branch  0 taken 6 (fallthrough)
+branch  1 taken 8
+        6:   18-block  1
+call    2 returned 6
+       14:   19:        Laser *l = new Laser("../Assets/Laser.png", 0, 0, false, renderer, false);
+       14:   19-block  0
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+       14:   19-block  1
+call    3 returned 14
+branch  4 taken 14 (fallthrough)
+branch  5 taken 0 (throw)
+    $$$$$:   19-block  2
+call    6 never executed
+       14:   20:        l->setNotActive();
+       14:   20-block  0
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+       14:   21:        l->setWidthHeight(1, 10);
+       14:   21-block  0
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+       14:   22:        lasers[i] = l;
+       14:   22-block  0
+call    0 returned 14
+        -:   23:    }
+        1:   24:    addGameObject<Background>("../Assets/Background.png", 0, -600, renderer, true);
+        1:   24-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   24-block  1
+    $$$$$:   24-block  2
+    $$$$$:   24-block  3
+        1:   25:    addGameObject<Background>("../Assets/Background.png", 0, 0, renderer, true);
+        1:   25-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   25-block  1
+    $$$$$:   25-block  2
+    $$$$$:   25-block  3
+        1:   26:    addGameObject<Player>("../Assets/player2.png", 350,  500, renderer, false);
+        1:   26-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   26-block  1
+    $$$$$:   26-block  2
+    $$$$$:   26-block  3
+        -:   27:    //addGameObject<Enemy>("../Assets/spaceship1.png", 250, -32, 0, 1, 400, renderer, false);
+        1:   28:    addGameObject<Boss>("../Assets/boss.png", 250, -30, 0, 1, 10, renderer, false);
+        1:   28-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:   28-block  1
+    $$$$$:   28-block  2
+    $$$$$:   28-block  3
+    $$$$$:   28-block  4
+    $$$$$:   28-block  5
+    $$$$$:   28-block  6
+        -:   29:    //boss->setNotActive();
+        1:   30:    boss->setWidthHeight(80, 80);
+        1:   30-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   31:}
+        1:   31-block  0
+    $$$$$:   31-block  1
+call    0 never executed
+        -:   32:
+function _ZN7Manager6updateEv called 5179 returned 100% blocks executed 74%
+     5179:   33:void Manager::update() {
+     5179:   34:    if (enemyTimer <= 0){
+     5179:   34-block  0
+branch  0 taken 11 (fallthrough)
+branch  1 taken 5168
+       11:   35:        std::cout << "4\n";
+       11:   35-block  0
+call    0 returned 11
+branch  1 taken 11 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   36:
+       11:   37:        std::uniform_int_distribution<int> distribution(0,800-64);
+       11:   37-block  0
+call    0 returned 11
+branch  1 taken 11 (fallthrough)
+branch  2 taken 0 (throw)
+       11:   38:        std::uniform_int_distribution<int> distribution2(-1,1);
+       11:   38-block  0
+call    0 returned 11
+branch  1 taken 11 (fallthrough)
+branch  2 taken 0 (throw)
+       11:   39:        int rand1 = distribution(generator);
+       11:   39-block  0
+call    0 returned 11
+branch  1 taken 11 (fallthrough)
+branch  2 taken 0 (throw)
+       11:   40:        int rand2 = distribution2(generator);
+       11:   40-block  0
+call    0 returned 11
+branch  1 taken 11 (fallthrough)
+branch  2 taken 0 (throw)
+       11:   41:        if (!boss->isActive())addGameObject<Enemy>("../Assets/spaceship1.png", rand1, -32, rand2, 1, 400, renderer, false);
+       11:   41-block  0
+call    0 returned 11
+branch  1 taken 6 (fallthrough)
+branch  2 taken 5
+        6:   41-block  1
+call    3 returned 6
+branch  4 taken 6 (fallthrough)
+branch  5 taken 0 (throw)
+        6:   41-block  2
+    $$$$$:   41-block  3
+    $$$$$:   41-block  4
+    $$$$$:   41-block  5
+    $$$$$:   41-block  6
+       11:   42:        enemyTimer = 500;
+       11:   42-block  0
+        -:   43:    }
+     5179:   44:    enemyTimer--;
+    53360:   45:    for (auto it = elements.begin();it !=elements.end();++it){
+     5179:   45-block  0
+call    0 returned 5179
+    48181:   45-block  1
+call    1 returned 48181
+    53360:   45-block  2
+call    2 returned 53360
+call    3 returned 53360
+branch  4 taken 48181
+branch  5 taken 5179 (fallthrough)
+    48181:   46:        if (it.operator*()->isActive()){
+    48181:   46-block  0
+call    0 returned 48181
+call    1 returned 48181
+branch  2 taken 47934 (fallthrough)
+branch  3 taken 247
+    47934:   47:            std::cout << "1\n";
+    47934:   47-block  0
+call    0 returned 47934
+branch  1 taken 47934 (fallthrough)
+branch  2 taken 0 (throw)
+    47934:   48:            it.operator*()->Update();
+    47934:   48-block  0
+call    0 returned 47934
+call    1 returned 47934
+branch  2 taken 47934 (fallthrough)
+branch  3 taken 0 (throw)
+        -:   49:        }
+        -:   50:    }
+     5179:   51:    std::cout << "done" << std::endl;
+     5179:   51-block  0
+call    0 returned 5179
+call    1 returned 5179
+        -:   52:
+    36253:   53:    for(Enemy *e: enemies){
+call    0 returned 5179
+call    1 returned 5179
+    31074:   53-block  0
+    36253:   53-block  1
+branch  2 taken 31074
+branch  3 taken 5179 (fallthrough)
+    31074:   54:        std::cout << "2\n";
+    31074:   54-block  0
+call    0 returned 31074
+    31074:   55:        if (e->isActive() && e->gunReady()) addGameObject<Laser>("../Assets/Laser.png", e->getX() + e->getWidth()*2-2, e->getY()+3, true, renderer, false);
+call    0 returned 31074
+branch  1 taken 1288 (fallthrough)
+branch  2 taken 29786
+     1288:   55-block  0
+call    3 returned 1288
+branch  4 taken 20 (fallthrough)
+branch  5 taken 1268
+       20:   55-block  1
+    31054:   55-block  2
+    31074:   55-block  3
+branch  6 taken 20 (fallthrough)
+branch  7 taken 31054
+       20:   55-block  4
+call    8 returned 20
+call    9 returned 20
+call   10 returned 20
+call   11 returned 20
+branch 12 taken 20 (fallthrough)
+branch 13 taken 0 (throw)
+       20:   55-block  5
+    $$$$$:   55-block  6
+    $$$$$:   55-block  7
+    $$$$$:   55-block  8
+    $$$$$:   55-block  9
+call   14 never executed
+        -:   56:    }
+     5179:   57:    if (boss->isActive() && boss->gunReady()) {
+     5179:   57-block  0
+call    0 returned 5179
+branch  1 taken 3009 (fallthrough)
+branch  2 taken 2170
+     3009:   57-block  1
+call    3 returned 3009
+branch  4 taken 35 (fallthrough)
+branch  5 taken 2974
+       35:   57-block  2
+     5144:   57-block  3
+     5179:   57-block  4
+branch  6 taken 35 (fallthrough)
+branch  7 taken 5144
+       35:   58:        std::cout << "3\n";
+       35:   58-block  0
+call    0 returned 35
+       35:   59:        addGameObject<Laser>("../Assets/Laser.png", boss->getX() + boss->getWidth(), boss->getY()+boss->getHeight()*2-70, true, renderer, false);
+call    0 returned 35
+call    1 returned 35
+call    2 returned 35
+call    3 returned 35
+call    4 returned 35
+branch  5 taken 35 (fallthrough)
+branch  6 taken 0 (throw)
+    $$$$$:   59-block  0
+    $$$$$:   59-block  1
+    $$$$$:   59-block  2
+    $$$$$:   59-block  3
+call    7 never executed
+       35:   60:        addGameObject<Laser>("../Assets/Laser.png", boss->getX() + boss->getWidth()-50, boss->getY()+boss->getHeight()*2-100, true, renderer, false);
+       35:   60-block  0
+call    0 returned 35
+call    1 returned 35
+call    2 returned 35
+call    3 returned 35
+call    4 returned 35
+branch  5 taken 35 (fallthrough)
+branch  6 taken 0 (throw)
+    $$$$$:   60-block  1
+    $$$$$:   60-block  2
+    $$$$$:   60-block  3
+    $$$$$:   60-block  4
+call    7 never executed
+       35:   61:        addGameObject<Laser>("../Assets/Laser.png", boss->getX() + boss->getWidth()+50, boss->getY()+boss->getHeight()*2-100, true, renderer, false);
+       35:   61-block  0
+call    0 returned 35
+call    1 returned 35
+call    2 returned 35
+call    3 returned 35
+call    4 returned 35
+branch  5 taken 35 (fallthrough)
+branch  6 taken 0 (throw)
+       35:   61-block  1
+    $$$$$:   61-block  2
+    $$$$$:   61-block  3
+    $$$$$:   61-block  4
+    $$$$$:   61-block  5
+call    7 never executed
+        -:   62:    }
+        -:   63:
+     5179:   64:    deleteNotActive();
+     5179:   64-block  0
+call    0 returned 5179
+     5179:   65:    std::cout << "5\n";
+call    0 returned 5179
+        -:   66:
+     5179:   67:    eH->input(player);
+call    0 returned 5179
+     5179:   68:    std::cout << "6\n";
+call    0 returned 5179
+        -:   69:
+     5179:   70:    eH->collision(&enemies, &lasers, player, boss);
+call    0 returned 5179
+     5179:   71:    std::cout << "7\n";
+call    0 returned 5179
+        -:   72:
+     5179:   73:    eH->finished(&elements);
+call    0 returned 5179
+     5179:   74:    if (eH->shooting() && shootCount <= 0 &&player->isActive()){
+call    0 returned 5179
+branch  1 taken 3226 (fallthrough)
+branch  2 taken 1953
+     3226:   74-block  0
+branch  3 taken 127 (fallthrough)
+branch  4 taken 3099
+      127:   74-block  1
+call    5 returned 127
+branch  6 taken 113 (fallthrough)
+branch  7 taken 14
+      113:   74-block  2
+     5066:   74-block  3
+     5179:   74-block  4
+branch  8 taken 113 (fallthrough)
+branch  9 taken 5066
+      113:   75:        std::cout << "8\n";
+      113:   75-block  0
+call    0 returned 113
+      113:   76:        if (count == 1){
+branch  0 taken 56 (fallthrough)
+branch  1 taken 57
+       56:   77:            addGameObject<Laser>("../Assets/Laser.png", player->getX() + player->getWidth()*2-2, player->getY()+3, false, renderer, false);
+       56:   77-block  0
+call    0 returned 56
+call    1 returned 56
+call    2 returned 56
+call    3 returned 56
+branch  4 taken 56 (fallthrough)
+branch  5 taken 0 (throw)
+    $$$$$:   77-block  1
+    $$$$$:   77-block  2
+    $$$$$:   77-block  3
+    $$$$$:   77-block  4
+call    6 never executed
+       56:   78:            count = 2;
+       56:   78-block  0
+        -:   79:        }
+        -:   80:        else{
+       57:   81:            addGameObject<Laser>("../Assets/Laser.png", player->getX() + 2, player->getY()+3, false, renderer, false);
+       57:   81-block  0
+call    0 returned 57
+call    1 returned 57
+call    2 returned 57
+branch  3 taken 57 (fallthrough)
+branch  4 taken 0 (throw)
+    $$$$$:   81-block  1
+    $$$$$:   81-block  2
+    $$$$$:   81-block  3
+    $$$$$:   81-block  4
+call    5 never executed
+       57:   82:            count = 1;
+       57:   82-block  0
+        -:   83:        }
+      113:   84:        shootCount = 30;
+      113:   84-block  0
+        -:   85:    }
+     5179:   86:    if (eH->getKillCount() >= 1) {
+     5179:   86-block  0
+call    0 returned 5179
+branch  1 taken 5 (fallthrough)
+branch  2 taken 5174
+        5:   87:        std::cout << "10\n";
+        5:   87-block  0
+call    0 returned 5
+        5:   88:        addGameObject<Boss>("../Assets/boss.png", 250, -30, 0, 1, 10, renderer, false);
+call    0 returned 5
+branch  1 taken 5 (fallthrough)
+branch  2 taken 0 (throw)
+        5:   88-block  0
+    $$$$$:   88-block  1
+    $$$$$:   88-block  2
+    $$$$$:   88-block  3
+    $$$$$:   88-block  4
+    $$$$$:   88-block  5
+        -:   89:
+        -:   90:    }
+     5179:   91:    shootCount--;
+     5179:   92:    if (!eH->running()) deleteAll();
+     5179:   92-block  0
+call    0 returned 5179
+branch  1 taken 2 (fallthrough)
+branch  2 taken 5177
+        2:   92-block  1
+call    3 returned 2
+     5179:   93:}
+     5179:   93-block  0
+function _ZN7Manager6renderEv called 5179 returned 100% blocks executed 100%
+     5179:   94:void Manager::render() {
+     5179:   95:    SDL_RenderClear(renderer);
+     5179:   95-block  0
+call    0 returned 5179
+        -:   96:
+    53350:   97:    for (auto it = elements.begin();it !=elements.end();++it){
+call    0 returned 5179
+    48171:   97-block  0
+call    1 returned 48171
+    53350:   97-block  1
+call    2 returned 53350
+call    3 returned 53350
+branch  4 taken 48171
+branch  5 taken 5179 (fallthrough)
+    48171:   98:        if (it.operator*()->isActive()) it.operator*()->Render(renderer);
+    48171:   98-block  0
+call    0 returned 48171
+call    1 returned 48171
+branch  2 taken 47924 (fallthrough)
+branch  3 taken 247
+    47924:   98-block  1
+call    4 returned 47924
+call    5 returned 47924
+branch  6 taken 47924 (fallthrough)
+branch  7 taken 0 (throw)
+        -:   99:    }
+     5179:  100:    SDL_RenderPresent(renderer);
+     5179:  100-block  0
+call    0 returned 5179
+     5179:  101:}
+        -:  102:
+        -:  103:template<class T, class... TArgs>
+      253:  104:void Manager::addGameObject(TArgs &&... args) {
+      253:  105:    auto *l = new T(std::forward<TArgs>(args)...);
+        -:  106:
+        -:  107:    if (std::is_same<T, Boss>::value){
+        6:  108:        boss = reinterpret_cast<Boss*>(l);
+        6:  109:        boss->init(250, -149);
+        6:  110:        boss->setWidthHeight(80, 80);
+        -:  111:    }
+        -:  112:    else if (std::is_same<T, Enemy>::value) {
+        -:  113:
+        6:  114:        Enemy *enemy = reinterpret_cast<Enemy*>(l);
+        -:  115:
+        -:  116:        //enemy->getDirection();
+        6:  117:        elements.emplace_back(enemy);
+        -:  118:
+        7:  119:        for (int i = 0; i < enemies.size(); ++i) {
+        -:  120:
+        7:  121:            if(!enemies[i]->isActive()) {
+        -:  122:                //delete(enemies[i]);
+        6:  123:                enemies[i] = reinterpret_cast<Enemy*>(l);
+        6:  124:                return;
+        -:  125:            }
+        -:  126:        }
+    #####:  127:        return;
+        -:  128:    }
+        -:  129:    else if (std::is_same<T, Laser>::value) {
+      238:  130:        Laser *laser = reinterpret_cast<Laser*>(l);
+      238:  131:        laser->setWidthHeight(1, 10);
+      238:  132:        elements.emplace_back(laser);
+        -:  133:
+     1060:  134:        for (int i = 0; i < lasers.size(); ++i) {
+        -:  135:
+     1060:  136:            if(!lasers[i]->isActive()) {
+      238:  137:                delete(lasers[i]);
+      238:  138:                lasers[i] = reinterpret_cast<Laser*>(l);
+      238:  139:                return;
+        -:  140:            }
+        -:  141:        }
+    #####:  142:        return;
+        -:  143:    }
+        1:  144:    else if (std::is_same<T, Player>::value) player = reinterpret_cast<Player*>(l);
+        -:  145:
+        -:  146:
+        9:  147:    elements.emplace_back(reinterpret_cast<T*>(l));
+        -:  148:
+        -:  149:}
+------------------
+_ZN7Manager13addGameObjectI5LaserJRA20_KciibRP12SDL_RendererbEEEvDpOT0_:
+function _ZN7Manager13addGameObjectI5LaserJRA20_KciibRP12SDL_RendererbEEEvDpOT0_ called 238 returned 100% blocks executed 90%
+      238:  104:void Manager::addGameObject(TArgs &&... args) {
+      238:  105:    auto *l = new T(std::forward<TArgs>(args)...);
+      238:  105-block  0
+call    0 returned 238
+call    1 returned 238
+call    2 returned 238
+call    3 returned 238
+call    4 returned 238
+call    5 returned 238
+call    6 returned 238
+call    7 returned 238
+branch  8 taken 238 (fallthrough)
+branch  9 taken 0 (throw)
+      238:  105-block  1
+    $$$$$:  105-block  2
+call   10 never executed
+        -:  106:
+        -:  107:    if (std::is_same<T, Boss>::value){
+        -:  108:        boss = reinterpret_cast<Boss*>(l);
+        -:  109:        boss->init(250, -149);
+        -:  110:        boss->setWidthHeight(80, 80);
+        -:  111:    }
+        -:  112:    else if (std::is_same<T, Enemy>::value) {
+        -:  113:
+        -:  114:        Enemy *enemy = reinterpret_cast<Enemy*>(l);
+        -:  115:
+        -:  116:        //enemy->getDirection();
+        -:  117:        elements.emplace_back(enemy);
+        -:  118:
+        -:  119:        for (int i = 0; i < enemies.size(); ++i) {
+        -:  120:
+        -:  121:            if(!enemies[i]->isActive()) {
+        -:  122:                //delete(enemies[i]);
+        -:  123:                enemies[i] = reinterpret_cast<Enemy*>(l);
+        -:  124:                return;
+        -:  125:            }
+        -:  126:        }
+        -:  127:        return;
+        -:  128:    }
+        -:  129:    else if (std::is_same<T, Laser>::value) {
+      238:  130:        Laser *laser = reinterpret_cast<Laser*>(l);
+      238:  131:        laser->setWidthHeight(1, 10);
+      238:  131-block  0
+call    0 returned 238
+branch  1 taken 238 (fallthrough)
+branch  2 taken 0 (throw)
+      238:  132:        elements.emplace_back(laser);
+      238:  132-block  0
+call    0 returned 238
+branch  1 taken 238 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  133:
+     1060:  134:        for (int i = 0; i < lasers.size(); ++i) {
+      238:  134-block  0
+      822:  134-block  1
+     1060:  134-block  2
+call    0 returned 1060
+branch  1 taken 1060
+branch  2 taken 0 (fallthrough)
+        -:  135:
+     1060:  136:            if(!lasers[i]->isActive()) {
+     1060:  136-block  0
+call    0 returned 1060
+call    1 returned 1060
+branch  2 taken 238 (fallthrough)
+branch  3 taken 822
+      238:  137:                delete(lasers[i]);
+      238:  137-block  0
+call    0 returned 238
+branch  1 taken 238 (fallthrough)
+branch  2 taken 0
+      238:  137-block  1
+call    3 returned 238
+call    4 returned 238
+      238:  138:                lasers[i] = reinterpret_cast<Laser*>(l);
+      238:  138-block  0
+call    0 returned 238
+      238:  139:                return;
+        -:  140:            }
+        -:  141:        }
+    #####:  142:        return;
+    %%%%%:  142-block  0
+        -:  143:    }
+        -:  144:    else if (std::is_same<T, Player>::value) player = reinterpret_cast<Player*>(l);
+        -:  145:
+        -:  146:
+        -:  147:    elements.emplace_back(reinterpret_cast<T*>(l));
+        -:  148:
+        -:  149:}
+------------------
+_ZN7Manager13addGameObjectI5EnemyJRA25_KcRiiS5_iiRP12SDL_RendererbEEEvDpOT0_:
+function _ZN7Manager13addGameObjectI5EnemyJRA25_KcRiiS5_iiRP12SDL_RendererbEEEvDpOT0_ called 6 returned 100% blocks executed 89%
+        6:  104:void Manager::addGameObject(TArgs &&... args) {
+        6:  105:    auto *l = new T(std::forward<TArgs>(args)...);
+        6:  105-block  0
+call    0 returned 6
+call    1 returned 6
+call    2 returned 6
+call    3 returned 6
+call    4 returned 6
+call    5 returned 6
+call    6 returned 6
+call    7 returned 6
+call    8 returned 6
+call    9 returned 6
+branch 10 taken 6 (fallthrough)
+branch 11 taken 0 (throw)
+        6:  105-block  1
+    $$$$$:  105-block  2
+call   12 never executed
+        -:  106:
+        -:  107:    if (std::is_same<T, Boss>::value){
+        -:  108:        boss = reinterpret_cast<Boss*>(l);
+        -:  109:        boss->init(250, -149);
+        -:  110:        boss->setWidthHeight(80, 80);
+        -:  111:    }
+        -:  112:    else if (std::is_same<T, Enemy>::value) {
+        -:  113:
+        6:  114:        Enemy *enemy = reinterpret_cast<Enemy*>(l);
+        -:  115:
+        -:  116:        //enemy->getDirection();
+        6:  117:        elements.emplace_back(enemy);
+        6:  117-block  0
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  118:
+        7:  119:        for (int i = 0; i < enemies.size(); ++i) {
+        6:  119-block  0
+        1:  119-block  1
+        7:  119-block  2
+call    0 returned 7
+branch  1 taken 7
+branch  2 taken 0 (fallthrough)
+        -:  120:
+        7:  121:            if(!enemies[i]->isActive()) {
+        7:  121-block  0
+call    0 returned 7
+call    1 returned 7
+branch  2 taken 6 (fallthrough)
+branch  3 taken 1
+        -:  122:                //delete(enemies[i]);
+        6:  123:                enemies[i] = reinterpret_cast<Enemy*>(l);
+        6:  123-block  0
+call    0 returned 6
+        6:  124:                return;
+        -:  125:            }
+        -:  126:        }
+    #####:  127:        return;
+    %%%%%:  127-block  0
+        -:  128:    }
+        -:  129:    else if (std::is_same<T, Laser>::value) {
+        -:  130:        Laser *laser = reinterpret_cast<Laser*>(l);
+        -:  131:        laser->setWidthHeight(1, 10);
+        -:  132:        elements.emplace_back(laser);
+        -:  133:
+        -:  134:        for (int i = 0; i < lasers.size(); ++i) {
+        -:  135:
+        -:  136:            if(!lasers[i]->isActive()) {
+        -:  137:                delete(lasers[i]);
+        -:  138:                lasers[i] = reinterpret_cast<Laser*>(l);
+        -:  139:                return;
+        -:  140:            }
+        -:  141:        }
+        -:  142:        return;
+        -:  143:    }
+        -:  144:    else if (std::is_same<T, Player>::value) player = reinterpret_cast<Player*>(l);
+        -:  145:
+        -:  146:
+        -:  147:    elements.emplace_back(reinterpret_cast<T*>(l));
+        -:  148:
+        -:  149:}
+------------------
+_ZN7Manager13addGameObjectI4BossJRA19_KciiiiiRP12SDL_RendererbEEEvDpOT0_:
+function _ZN7Manager13addGameObjectI4BossJRA19_KciiiiiRP12SDL_RendererbEEEvDpOT0_ called 6 returned 100% blocks executed 89%
+        6:  104:void Manager::addGameObject(TArgs &&... args) {
+        6:  105:    auto *l = new T(std::forward<TArgs>(args)...);
+        6:  105-block  0
+call    0 returned 6
+call    1 returned 6
+call    2 returned 6
+call    3 returned 6
+call    4 returned 6
+call    5 returned 6
+call    6 returned 6
+call    7 returned 6
+call    8 returned 6
+call    9 returned 6
+branch 10 taken 6 (fallthrough)
+branch 11 taken 0 (throw)
+        6:  105-block  1
+    $$$$$:  105-block  2
+call   12 never executed
+        -:  106:
+        -:  107:    if (std::is_same<T, Boss>::value){
+        6:  108:        boss = reinterpret_cast<Boss*>(l);
+        6:  109:        boss->init(250, -149);
+        6:  109-block  0
+call    0 returned 6
+        6:  110:        boss->setWidthHeight(80, 80);
+call    0 returned 6
+        -:  111:    }
+        -:  112:    else if (std::is_same<T, Enemy>::value) {
+        -:  113:
+        -:  114:        Enemy *enemy = reinterpret_cast<Enemy*>(l);
+        -:  115:
+        -:  116:        //enemy->getDirection();
+        -:  117:        elements.emplace_back(enemy);
+        -:  118:
+        -:  119:        for (int i = 0; i < enemies.size(); ++i) {
+        -:  120:
+        -:  121:            if(!enemies[i]->isActive()) {
+        -:  122:                //delete(enemies[i]);
+        -:  123:                enemies[i] = reinterpret_cast<Enemy*>(l);
+        -:  124:                return;
+        -:  125:            }
+        -:  126:        }
+        -:  127:        return;
+        -:  128:    }
+        -:  129:    else if (std::is_same<T, Laser>::value) {
+        -:  130:        Laser *laser = reinterpret_cast<Laser*>(l);
+        -:  131:        laser->setWidthHeight(1, 10);
+        -:  132:        elements.emplace_back(laser);
+        -:  133:
+        -:  134:        for (int i = 0; i < lasers.size(); ++i) {
+        -:  135:
+        -:  136:            if(!lasers[i]->isActive()) {
+        -:  137:                delete(lasers[i]);
+        -:  138:                lasers[i] = reinterpret_cast<Laser*>(l);
+        -:  139:                return;
+        -:  140:            }
+        -:  141:        }
+        -:  142:        return;
+        -:  143:    }
+        -:  144:    else if (std::is_same<T, Player>::value) player = reinterpret_cast<Player*>(l);
+        -:  145:
+        -:  146:
+        6:  147:    elements.emplace_back(reinterpret_cast<T*>(l));
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0 (throw)
+        6:  147-block  0
+        -:  148:
+        -:  149:}
+------------------
+_ZN7Manager13addGameObjectI6PlayerJRA22_KciiRP12SDL_RendererbEEEvDpOT0_:
+function _ZN7Manager13addGameObjectI6PlayerJRA22_KciiRP12SDL_RendererbEEEvDpOT0_ called 1 returned 100% blocks executed 86%
+        1:  104:void Manager::addGameObject(TArgs &&... args) {
+        1:  105:    auto *l = new T(std::forward<TArgs>(args)...);
+        1:  105-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+call    4 returned 1
+call    5 returned 1
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+        1:  105-block  1
+    $$$$$:  105-block  2
+call    9 never executed
+        -:  106:
+        -:  107:    if (std::is_same<T, Boss>::value){
+        -:  108:        boss = reinterpret_cast<Boss*>(l);
+        -:  109:        boss->init(250, -149);
+        -:  110:        boss->setWidthHeight(80, 80);
+        -:  111:    }
+        -:  112:    else if (std::is_same<T, Enemy>::value) {
+        -:  113:
+        -:  114:        Enemy *enemy = reinterpret_cast<Enemy*>(l);
+        -:  115:
+        -:  116:        //enemy->getDirection();
+        -:  117:        elements.emplace_back(enemy);
+        -:  118:
+        -:  119:        for (int i = 0; i < enemies.size(); ++i) {
+        -:  120:
+        -:  121:            if(!enemies[i]->isActive()) {
+        -:  122:                //delete(enemies[i]);
+        -:  123:                enemies[i] = reinterpret_cast<Enemy*>(l);
+        -:  124:                return;
+        -:  125:            }
+        -:  126:        }
+        -:  127:        return;
+        -:  128:    }
+        -:  129:    else if (std::is_same<T, Laser>::value) {
+        -:  130:        Laser *laser = reinterpret_cast<Laser*>(l);
+        -:  131:        laser->setWidthHeight(1, 10);
+        -:  132:        elements.emplace_back(laser);
+        -:  133:
+        -:  134:        for (int i = 0; i < lasers.size(); ++i) {
+        -:  135:
+        -:  136:            if(!lasers[i]->isActive()) {
+        -:  137:                delete(lasers[i]);
+        -:  138:                lasers[i] = reinterpret_cast<Laser*>(l);
+        -:  139:                return;
+        -:  140:            }
+        -:  141:        }
+        -:  142:        return;
+        -:  143:    }
+        1:  144:    else if (std::is_same<T, Player>::value) player = reinterpret_cast<Player*>(l);
+        -:  145:
+        -:  146:
+        1:  147:    elements.emplace_back(reinterpret_cast<T*>(l));
+        1:  147-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  147-block  1
+        -:  148:
+        -:  149:}
+------------------
+_ZN7Manager13addGameObjectI10BackgroundJRA25_KciiRP12SDL_RendererbEEEvDpOT0_:
+function _ZN7Manager13addGameObjectI10BackgroundJRA25_KciiRP12SDL_RendererbEEEvDpOT0_ called 2 returned 100% blocks executed 86%
+        2:  104:void Manager::addGameObject(TArgs &&... args) {
+        2:  105:    auto *l = new T(std::forward<TArgs>(args)...);
+        2:  105-block  0
+call    0 returned 2
+call    1 returned 2
+call    2 returned 2
+call    3 returned 2
+call    4 returned 2
+call    5 returned 2
+call    6 returned 2
+branch  7 taken 2 (fallthrough)
+branch  8 taken 0 (throw)
+        2:  105-block  1
+    $$$$$:  105-block  2
+call    9 never executed
+        -:  106:
+        -:  107:    if (std::is_same<T, Boss>::value){
+        -:  108:        boss = reinterpret_cast<Boss*>(l);
+        -:  109:        boss->init(250, -149);
+        -:  110:        boss->setWidthHeight(80, 80);
+        -:  111:    }
+        -:  112:    else if (std::is_same<T, Enemy>::value) {
+        -:  113:
+        -:  114:        Enemy *enemy = reinterpret_cast<Enemy*>(l);
+        -:  115:
+        -:  116:        //enemy->getDirection();
+        -:  117:        elements.emplace_back(enemy);
+        -:  118:
+        -:  119:        for (int i = 0; i < enemies.size(); ++i) {
+        -:  120:
+        -:  121:            if(!enemies[i]->isActive()) {
+        -:  122:                //delete(enemies[i]);
+        -:  123:                enemies[i] = reinterpret_cast<Enemy*>(l);
+        -:  124:                return;
+        -:  125:            }
+        -:  126:        }
+        -:  127:        return;
+        -:  128:    }
+        -:  129:    else if (std::is_same<T, Laser>::value) {
+        -:  130:        Laser *laser = reinterpret_cast<Laser*>(l);
+        -:  131:        laser->setWidthHeight(1, 10);
+        -:  132:        elements.emplace_back(laser);
+        -:  133:
+        -:  134:        for (int i = 0; i < lasers.size(); ++i) {
+        -:  135:
+        -:  136:            if(!lasers[i]->isActive()) {
+        -:  137:                delete(lasers[i]);
+        -:  138:                lasers[i] = reinterpret_cast<Laser*>(l);
+        -:  139:                return;
+        -:  140:            }
+        -:  141:        }
+        -:  142:        return;
+        -:  143:    }
+        -:  144:    else if (std::is_same<T, Player>::value) player = reinterpret_cast<Player*>(l);
+        -:  145:
+        -:  146:
+        2:  147:    elements.emplace_back(reinterpret_cast<T*>(l));
+        2:  147-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  147-block  1
+        -:  148:
+        -:  149:}
+------------------
+        -:  150:
+        -:  151:
+        -:  152:
+        -:  153:
+function _ZN7Manager15deleteNotActiveEv called 5179 returned 100% blocks executed 75%
+     5179:  154:void Manager::deleteNotActive() {
+    10358:  155:    elements.erase(
+call    0 returned 5179
+     5179:  155-block  0
+call    1 returned 5179
+call    2 returned 5179
+branch  3 taken 5179 (fallthrough)
+branch  4 taken 0 (throw)
+    $$$$$:  155-block  1
+    $$$$$:  155-block  2
+function _ZZN7Manager15deleteNotActiveEvENKUlRT_E_clIP10GameObjectEEDaS1_ called 48306 returned 100% blocks executed 100%
+     5179:  156:            std::remove_if(elements.begin(), elements.end(), [](auto & o){
+call    0 returned 5179
+call    1 returned 5179
+call    2 returned 5179
+branch  3 taken 5179 (fallthrough)
+branch  4 taken 0 (throw)
+    $$$$$:  156-block  0
+    48306:  157:                return !o->isActive();}),
+    48306:  157-block  0
+call    0 returned 48306
+     5179:  158:            elements.end());
+     5179:  158-block  0
+call    0 returned 5179
+     5179:  159:}
+     5179:  159-block  0
+function _ZN7Manager9deleteAllEv called 2 returned 100% blocks executed 100%
+        2:  160:void Manager::deleteAll(){
+        2:  161:    elements.clear();
+        2:  161-block  0
+call    0 returned 2
+       14:  162:    for(Enemy *e: enemies){
+call    0 returned 2
+call    1 returned 2
+       12:  162-block  0
+       14:  162-block  1
+branch  2 taken 12
+branch  3 taken 2 (fallthrough)
+       12:  163:        if (e->isActive()) e->setNotActive();
+       12:  163-block  0
+call    0 returned 12
+branch  1 taken 1 (fallthrough)
+branch  2 taken 11
+        1:  163-block  1
+call    3 returned 1
+        -:  164:    }
+       30:  165:    for(Laser *l: lasers) {
+        2:  165-block  0
+call    0 returned 2
+call    1 returned 2
+       28:  165-block  1
+       30:  165-block  2
+branch  2 taken 28
+branch  3 taken 2 (fallthrough)
+       28:  166:        if(l->isActive())l->setNotActive();
+       28:  166-block  0
+call    0 returned 28
+branch  1 taken 2 (fallthrough)
+branch  2 taken 26
+        2:  166-block  1
+call    3 returned 2
+        -:  167:    }
+        2:  168:    player->setNotActive();
+        2:  168-block  0
+call    0 returned 2
+        2:  169:    std::cout <<"all deleted\n";
+call    0 returned 2
+        -:  170:
+        2:  171:}
+        -:  172:
+        -:  173:

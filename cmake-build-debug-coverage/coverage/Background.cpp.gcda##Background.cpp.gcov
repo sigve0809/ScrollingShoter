@@ -1,0 +1,25 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/Background.cpp
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Background.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Background.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Sigve Langva on 4/6/2022.
+        -:    3://
+        -:    4:
+        -:    5:#include "Background.h"
+        -:    6:
+function _ZN10BackgroundC2EPKciiP12SDL_Rendererb called 2 returned 100% blocks executed 80%
+        2:    7:Background::Background(const char *texturesheet, int x, int y, SDL_Renderer *renderer, bool b) :
+        2:    8:        GameObject(texturesheet, x, y,renderer, b) {
+        2:    8-block  0
+call    0 returned 2
+        2:    9:    setWidthHeight(400, 300);
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   10:    xVel = 0;
+        2:   11:    yVel = 2;
+        2:   12:}
+        2:   12-block  0
+    $$$$$:   12-block  1
+call    0 never executed

@@ -1,0 +1,122 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/Boss.cpp
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Boss.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Boss.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Sigve Langva on 4/6/2022.
+        -:    3://
+        -:    4:
+        -:    5:#include "Boss.h"
+        -:    6:
+function _ZN4BossC2EPKciiiiiP12SDL_Rendererb called 6 returned 100% blocks executed 83%
+        6:    7:Boss::Boss(const char *texturesheet, int x, int y, int patternX, int patternY, int maxY, SDL_Renderer *renderer, bool b)
+        6:    8:        : Enemy(texturesheet, x, y, patternX, patternY, maxY, renderer, b) {
+        6:    8-block  0
+call    0 returned 6
+        6:    9:    setWidthHeight(128, 128);
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0 (throw)
+        6:   10:    getDirection();
+        6:   10-block  0
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0 (throw)
+        6:   11:    shootCool = 100;
+        -:   12:
+        6:   13:}
+        6:   13-block  0
+    $$$$$:   13-block  1
+call    0 never executed
+        -:   14:
+function _ZN4Boss6UpdateEv called 6486 returned 100% blocks executed 100%
+     6486:   15:void Boss::Update() {
+     6486:   16:    Enemy::Update();
+     6486:   16-block  0
+call    0 returned 6486
+     6486:   17:    if (ypos >= a->getMaxY() && !changed) {
+call    0 returned 6486
+call    1 returned 6486
+branch  2 taken 5532 (fallthrough)
+branch  3 taken 954
+     5532:   17-block  0
+branch  4 taken 6 (fallthrough)
+branch  5 taken 5526
+        6:   17-block  1
+     6480:   17-block  2
+     6486:   17-block  3
+branch  6 taken 6 (fallthrough)
+branch  7 taken 6480
+        6:   18:        a->giveYval(0);
+        6:   18-block  0
+call    0 returned 6
+call    1 returned 6
+        6:   19:        a->giveXval(1);
+call    0 returned 6
+call    1 returned 6
+        6:   20:        changed = true;
+        -:   21:    }
+     6486:   22:}
+        -:   23:
+function _ZN4Boss6RenderEP12SDL_Renderer called 6485 returned 100% blocks executed 100%
+     6485:   24:void Boss::Render(SDL_Renderer *renderer) {
+     6485:   25:    SDL_RenderCopyEx(renderer, objTexture, NULL, &destRect, 0.0, NULL, SDL_FLIP_VERTICAL);
+     6485:   25-block  0
+call    0 returned 6485
+        -:   26:
+        -:   27:
+     6485:   28:}
+        -:   29:
+function _ZN4Boss3hitEii called 7499 returned 100% blocks executed 100%
+     7499:   30:bool Boss::hit(int x, int y) {
+        -:   31:
+     7499:   32:    if(x > xpos && x< xpos+(getWidth()*2) && y > ypos && y< ypos+(getHeight())) {
+     7499:   32-block  0
+branch  0 taken 5991 (fallthrough)
+branch  1 taken 1508
+     5991:   32-block  1
+call    2 returned 5991
+branch  3 taken 3449 (fallthrough)
+branch  4 taken 2542
+     3449:   32-block  2
+branch  5 taken 3364 (fallthrough)
+branch  6 taken 85
+     3364:   32-block  3
+call    7 returned 3364
+branch  8 taken 50 (fallthrough)
+branch  9 taken 3314
+       50:   32-block  4
+     7449:   32-block  5
+     7499:   32-block  6
+branch 10 taken 50 (fallthrough)
+branch 11 taken 7449
+       50:   33:        health--;
+       50:   34:        if (health <= 0) setNotActive();
+       50:   34-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 45
+        5:   34-block  1
+call    2 returned 5
+       50:   35:        return true;
+       50:   35-block  0
+        -:   36:    }
+     7449:   37:    return false;
+     7449:   37-block  0
+        -:   38:}
+        -:   39:
+function _ZN4Boss4initEii called 6 returned 100% blocks executed 100%
+        6:   40:void Boss::init(int x, int y) {
+        6:   41:    setXpos(x);
+        6:   41-block  0
+call    0 returned 6
+        6:   42:    setYpos(y);
+call    0 returned 6
+        6:   43:    a->giveXval(0);
+call    0 returned 6
+call    1 returned 6
+        6:   44:    a->giveYval(1);
+call    0 returned 6
+call    1 returned 6
+        6:   45:    setIsActive();
+call    0 returned 6
+        6:   46:}

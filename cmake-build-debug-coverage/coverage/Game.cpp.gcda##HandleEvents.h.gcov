@@ -1,0 +1,39 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/HandleEvents.h
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Game.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\Game.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Sigve Langva on 4/5/2022.
+        -:    3://
+        -:    4:
+        -:    5:#ifndef PG4400_V22_KNR1033_HANDLEEVENTS_H
+        -:    6:#define PG4400_V22_KNR1033_HANDLEEVENTS_H
+        -:    7:#include "Player.h"
+        -:    8:#include "Enemy.h"
+        -:    9:#include "Boss.h"
+        -:   10:#include <memory>
+        -:   11:
+        -:   12:class HandleEvents {
+        -:   13:public:
+        -:   14:    //HandleEvents();
+        -:   15:
+        -:   16:    void input(Player *player);
+        -:   17:    void collision(std::array<Enemy*, 6> *e, std::array<Laser*, 14> *l, Player *player, Boss *boss);
+        -:   18:
+        -:   19:    void finished(std::vector<GameObject*> *array);
+        -:   20:    bool shooting() const{return isShooting;}
+function _ZNK12HandleEvents7runningEv called 10358 returned 100% blocks executed 100%
+    10358:   21:    bool running() const{return isRunning;}
+    10358:   21-block  0
+        -:   22:    int getKillCount(){return killCount;}
+        -:   23:    int getKills(){return kills;}
+        -:   24:
+        -:   25:private:
+        -:   26:    bool isRunning = true;
+        -:   27:    bool isShooting = false;
+        -:   28:    int killCount = 0;
+        -:   29:    int kills = 0;
+        -:   30:};
+        -:   31:
+        -:   32:
+        -:   33:#endif //PG4400_V22_KNR1033_HANDLEEVENTS_H

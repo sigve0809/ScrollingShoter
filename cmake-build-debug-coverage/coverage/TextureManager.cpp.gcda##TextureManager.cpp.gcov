@@ -1,0 +1,27 @@
+        -:    0:Source:C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/TextureManager.cpp
+        -:    0:Graph:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\TextureManager.cpp.gcno
+        -:    0:Data:C:\Users\Sigve Langva\CLionProjects\PG4400_V22_Knr1033\cmake-build-debug-coverage\CMakeFiles\PG4400_V22_Knr1033.dir\TextureManager.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by Sigve Langva on 3/30/2022.
+        -:    3://
+        -:    4:
+        -:    5:#include "TextureManager.h"
+function _ZN14TextureManager11LoadTextureEPKcP12SDL_Renderer called 281 returned 100% blocks executed 100%
+      281:    6:SDL_Texture *TextureManager::LoadTexture(const char *fileName, SDL_Renderer *renderer) {
+      281:    7:    SDL_Surface *tempSurface = IMG_Load(fileName);
+      281:    7-block  0
+call    0 returned 281
+      281:    8:    SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, tempSurface);
+call    0 returned 281
+      281:    9:    SDL_FreeSurface(tempSurface);
+call    0 returned 281
+      281:   10:    return tex;
+        -:   11:}
+        -:   12:
+function _ZN14TextureManager4DrawEP11SDL_Texture8SDL_RectS2_P12SDL_Renderer called 0 returned 0% blocks executed 0%
+    #####:   13:void TextureManager::Draw(SDL_Texture *tex, SDL_Rect src, SDL_Rect dest, SDL_Renderer *renderer) {
+    #####:   14:    SDL_RenderCopy(renderer, tex, &src, &dest);
+    %%%%%:   14-block  0
+call    0 never executed
+    #####:   15:}
