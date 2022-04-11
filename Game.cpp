@@ -26,8 +26,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
             std::cout << "renderer created" << std::endl;
         }
-        SDL_Init(SDL_INIT_VIDEO);
-        if (TTF_Init() < 0) std::cout << "ERROR: " << TTF_GetError() << std::endl;
+        if (TTF_Init() == 0) std::cout << "TTF initialised" << std::endl;
         isRunning = true;
     }
     manager = std::make_shared<Manager>(renderer);

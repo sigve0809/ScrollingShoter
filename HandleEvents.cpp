@@ -67,7 +67,7 @@ void HandleEvents::input(std::shared_ptr<Player> *player) {
 }
 
 void HandleEvents::collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector<std::shared_ptr<Laser>> *l, std::shared_ptr<Player> *player, std::shared_ptr<Boss> *boss) {
-    if(killCount >=1) killCount = 0;
+    if(killCount >=10) killCount = 0;
     for(auto laser: *l){
         if (laser->isActive() && !laser->isEnemy()){
             for (auto enemy : *e) {
@@ -80,6 +80,10 @@ void HandleEvents::collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector
             }
             if (boss->operator*().isActive()&&boss->operator*().hit(laser->getX(), laser->getY())) {
                 laser->setNotActive();
+                if (boss->operator*().getHealth() <= 0){
+                    boss->operator*().setNotActive();
+                    ++kills;
+                }
             }
         }
         else if (laser->isActive() && laser->isEnemy()){

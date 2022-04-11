@@ -38,9 +38,6 @@ void Player::Update() {
     if (xpos < -65) setXpos(805);
     if (xpos > 810) setXpos(-60);
     counter--;
-
-
-
 }
 
 void Player::Render(SDL_Renderer *renderer) {

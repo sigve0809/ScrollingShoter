@@ -15,7 +15,7 @@ public:
 
 
     bool hit(int x, int y){
-        if(x > xpos && x< xpos+(getWidth()*2) && y > ypos && y< ypos+(getHeight()*2)) {
+        if(x > xpos && x< xpos+(getWidth()*2) && y > ypos && y< ypos+(getHeight())) {
             std::cout << "In\n";
             alive = false;
             return true;

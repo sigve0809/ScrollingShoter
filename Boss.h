@@ -20,6 +20,9 @@ public:
     void setIsActive(){
         active = true;
     }
+    int getHealth(){
+        return health;
+    }
 
 private:
     int health = 10;

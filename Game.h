@@ -9,10 +9,7 @@
 #include <SDL2/SDL.h>
 #include <SDL_image.h>
 #include <memory>
-//#include "TextureManager.h"
-//#include "GameObject.h"
 #include "Manager.h"
-//#include "Laser.h"
 #include <vector>
 #include <SDL_ttf.h>
 

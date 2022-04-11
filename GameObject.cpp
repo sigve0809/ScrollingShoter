@@ -22,9 +22,6 @@ void GameObject::Update() {
     destRect.y = ypos;
     destRect.w = srcRect.w * 2;
     destRect.h = srcRect.h * 2;
-
-
-
 }
 
 void GameObject::Render(SDL_Renderer *renderer) {
@@ -38,6 +35,13 @@ void GameObject::destroyGameObject() {
 void GameObject::setWidthHeight(int w, int h) {
     width = w;
     height = h;
+}
+
+GameObject::GameObject(SDL_Renderer *renderer) {
+    xpos = 700;
+    ypos = 50;
+    width = 32;
+    height = 32;
 }
 
 

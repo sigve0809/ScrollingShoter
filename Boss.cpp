@@ -31,7 +31,6 @@ bool Boss::hit(int x, int y) {
 
     if(x > xpos && x< xpos+(getWidth()*2) && y > ypos && y< ypos+(getHeight())) {
         health--;
-        if (health <= 0) setNotActive();
         return true;
     }
     return false;

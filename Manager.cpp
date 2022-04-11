@@ -14,6 +14,8 @@ Manager::Manager(SDL_Renderer *renderer) : renderer(renderer) {
     addGameObject<Background>("../Assets/Background.png", 0, 0, renderer, true);
     addGameObject<Player>("../Assets/player2.png", 350,  500, renderer, false);
     addGameObject<Boss>("../Assets/boss.png", 250, -30, 0, 1, 10, renderer, false);
+    addGameObject<Text>(renderer, std::to_string(kills));
+
     boss->setNotActive();
     boss->setWidthHeight(80, 80);
 }
@@ -21,7 +23,6 @@ Manager::Manager(SDL_Renderer *renderer) : renderer(renderer) {
 void Manager::update() {
     if (enemyTimer <= 0){
         std::cout << "4\n";
-
         std::uniform_int_distribution<int> distribution(0,800-64);
         std::uniform_int_distribution<int> distribution2(-1,1);
         int rand1 = distribution(generator);
@@ -66,9 +67,14 @@ void Manager::update() {
         }
         shootCount = 30;
     }
-    if (eH->getKillCount() >= 1) {
+    if (eH->getKillCount() >= 10) {
         std::cout << "10\n";
         addGameObject<Boss>("../Assets/boss.png", 250, -30, 0, 1, 10, renderer, false);
+    }
+    if (eH->getKills() > kills){
+        kills++;
+        text->setNotActive();
+        addGameObject<Text>(renderer, std::to_string(kills));
     }
     shootCount--;
     for (auto it = elements.begin();it !=elements.end();++it){
@@ -96,6 +102,8 @@ void Manager::addGameObject(TArgs &&... args) {
     else if (std::is_same<T, Enemy>::value) enemies.emplace_back(std::dynamic_pointer_cast<Enemy>(l));
     else if (std::is_same<T, Laser>::value) lasers.emplace_back(std::dynamic_pointer_cast<Laser>(l));
     else if (std::is_same<T, Player>::value) player = std::dynamic_pointer_cast<Player>(l);
+    else if (std::is_same<T, Text>::value) text = std::dynamic_pointer_cast<Text>(l);
+
     elements.emplace_back(l);
 }
 

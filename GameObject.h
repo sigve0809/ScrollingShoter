@@ -10,6 +10,7 @@
 #include <iostream>
 class GameObject {
 public:
+    GameObject(SDL_Renderer *renderer);
     GameObject(const char *texturesheet, int x, int y, SDL_Renderer *renderer, bool b);
     ~GameObject();
 
@@ -59,9 +60,9 @@ private:
     int width = 32;
     int height = 32;
 protected:
+    SDL_Texture *objTexture;
     bool background;
     bool active = true;
-    SDL_Texture *objTexture;
     SDL_Rect srcRect, destRect;
     int xpos;
     int ypos;

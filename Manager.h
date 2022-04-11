@@ -13,6 +13,8 @@
 #include <memory>
 #include <random>
 #include <SDL.h>
+#include "Text.h"
+
 class Manager {
 
 public:
@@ -37,6 +39,8 @@ private:
     int added = 0;
     void resetArray();
     std::default_random_engine generator;
+    std::shared_ptr<Text> text;
+    int kills = 0;
 };
 
 
