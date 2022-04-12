@@ -23,7 +23,7 @@ public:
     void update();
     void render();
     template<typename T, typename ... TArgs>
-    void addGameObject(TArgs&&... args);
+    std::shared_ptr<T> addGameObject(TArgs&&... args);
     void deleteNotActive();
 private:
     int count = 500;
@@ -41,6 +41,8 @@ private:
     std::default_random_engine generator;
     std::shared_ptr<Text> text;
     int kills = 0;
+
+    void checkForDeath();
 };
 
 

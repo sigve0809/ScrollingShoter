@@ -56,10 +56,18 @@ public:
     }
     void setID(int x){id = x;}
     int getID(){return id;}
+    void setExplotion(){
+        if (explotionReady) explotionReady = false;
+        else explotionReady = true;
+    }
+    bool getExplotion(){
+        return explotionReady;
+    }
 private:
     int width = 32;
     int height = 32;
 protected:
+    bool explotionReady = false;
     SDL_Texture *objTexture;
     bool background;
     bool active = true;

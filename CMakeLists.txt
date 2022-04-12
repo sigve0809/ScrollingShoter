@@ -3,7 +3,7 @@ project(PG4400_V22_Knr1033)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(PG4400_V22_Knr1033 main.cpp Game.cpp Game.h GameObject.cpp GameObject.h TextureManager.cpp TextureManager.h Player.cpp Player.h Laser.cpp Laser.h Enemy.cpp Enemy.h Direction.cpp Direction.h HandleEvents.cpp HandleEvents.h Manager.cpp Manager.h Background.cpp Background.h Boss.cpp Boss.h Text.cpp Text.h)
+add_executable(PG4400_V22_Knr1033 main.cpp Game.cpp Game.h GameObject.cpp GameObject.h TextureManager.cpp TextureManager.h Player.cpp Player.h Laser.cpp Laser.h Enemy.cpp Enemy.h Direction.cpp Direction.h HandleEvents.cpp HandleEvents.h Manager.cpp Manager.h Background.cpp Background.h Boss.cpp Boss.h Text.cpp Text.h Explotion.cpp Explotion.h)
 
 
 

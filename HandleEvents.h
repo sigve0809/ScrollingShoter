@@ -19,8 +19,8 @@ public:
     void finished(std::vector<std::shared_ptr<GameObject>> *array);
     bool shooting() const{return isShooting;}
     bool running() const{return isRunning;}
-    int getKillCount(){return killCount;}
-    int getKills(){return kills;}
+    int getKillCount() const{return killCount;}
+    int getKills() const{return kills;}
 
 private:
     bool isRunning = true;

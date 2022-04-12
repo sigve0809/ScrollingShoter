@@ -5,6 +5,7 @@
 #include <functional>
 #include "Manager.h"
 #include "Background.h"
+#include "Explotion.h"
 
 
 Manager::Manager(SDL_Renderer *renderer) : renderer(renderer) {
@@ -53,7 +54,7 @@ void Manager::update() {
 
     eH->collision(&enemies, &lasers, &player, &boss);
     std::cout << "7\n";
-
+    checkForDeath();
     eH->finished(&elements);
     if (eH->shooting() && shootCount <= 0 &&player->isActive()){
         std::cout << "8\n";
@@ -67,7 +68,7 @@ void Manager::update() {
         }
         shootCount = 30;
     }
-    if (eH->getKillCount() >= 10) {
+    if (eH->getKillCount() >= 1) {
         std::cout << "10\n";
         addGameObject<Boss>("../Assets/boss.png", 250, -30, 0, 1, 10, renderer, false);
     }
@@ -96,15 +97,15 @@ void Manager::render() {
 }
 
 template<class T, class... TArgs>
-void Manager::addGameObject(TArgs &&... args) {
+std::shared_ptr<T> Manager::addGameObject(TArgs &&... args) {
     std::shared_ptr<T> l = std::make_shared<T>(std::forward<TArgs>(args)...);
     if (std::is_same<T, Boss>::value) boss = std::dynamic_pointer_cast<Boss>(l);
     else if (std::is_same<T, Enemy>::value) enemies.emplace_back(std::dynamic_pointer_cast<Enemy>(l));
     else if (std::is_same<T, Laser>::value) lasers.emplace_back(std::dynamic_pointer_cast<Laser>(l));
     else if (std::is_same<T, Player>::value) player = std::dynamic_pointer_cast<Player>(l);
     else if (std::is_same<T, Text>::value) text = std::dynamic_pointer_cast<Text>(l);
-
     elements.emplace_back(l);
+    return std::dynamic_pointer_cast<T>(l);
 }
 
 void Manager::deleteNotActive() {
@@ -130,5 +131,22 @@ void Manager::deleteAll(){
     enemies.clear();
     lasers.clear();
     std::cout <<"all deleted\n";
+}
+void Manager::checkForDeath(){
+    std::for_each(enemies.begin(), enemies.end(), [this](std::shared_ptr<Enemy> &ob) {
+        if (!ob->isActive()){
+            addGameObject<Explotion>("../Assets/exploSprite.png", ob->getX(), ob->getY(), renderer, false);
+        }
+    });
+    if (player->getExplotion()) {
+        addGameObject<Explotion>("../Assets/exploSprite.png", player->getX(), player->getY(), renderer, false);
+        player->setExplotion();
+    }
+    if (boss->getExplotion()) {
+        std::shared_ptr<Explotion> g = addGameObject<Explotion>("../Assets/exploSprite.png", boss->getX(), boss->getY(), renderer, false);
+        g->setWidthHeight(boss->getWidth(), boss->getHeight());
+        boss->setExplotion();
+    }
+
 
 }

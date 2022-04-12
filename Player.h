@@ -28,10 +28,7 @@ public:
 
 private:
     bool alive = true;
-    int cannon = 1;
     bool up = true;
-    int destNr = 1;
-    int check = 0;
     int counter = 10;
 };
 

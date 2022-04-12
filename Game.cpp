@@ -44,6 +44,7 @@ void Game::clean() {
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
+    TTF_Quit();
     std::cout << "Game Cleaned" << std::endl;
 }
 
