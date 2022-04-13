@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PG4400_V22_Knr1033::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PG4400_V22_Knr1033-Debug-19655399c54613bec497.json",
+					"jsonFile" : "target-PG4400_V22_Knr1033-Debug-a878ac88ff7fefe771bb.json",
 					"name" : "PG4400_V22_Knr1033",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/cmake-build-debug",
+		"build" : "C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/cmake-build-debug-coverage",
 		"source" : "C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033"
 	},
 	"version" : 

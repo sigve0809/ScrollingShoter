@@ -67,14 +67,14 @@ void HandleEvents::input(std::shared_ptr<Player> *player) {
 }
 
 void HandleEvents::collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector<std::shared_ptr<Laser>> *l, std::shared_ptr<Player> *player, std::shared_ptr<Boss> *boss) {
-    if(killCount >=1) killCount = 0;
+    if(killCount >=5) killCount = 0;
     for(auto laser: *l){
         if (laser->isActive() && !laser->isEnemy()){
             for (auto enemy : *e) {
                 if(enemy->isActive() && enemy->hit(laser->getX(), laser->getY())){
                     laser->setNotActive();
                     enemy->setNotActive();
-                    ++killCount;
+                    if (!boss->operator*().isActive())++killCount;
                     ++kills;
                 }
             }

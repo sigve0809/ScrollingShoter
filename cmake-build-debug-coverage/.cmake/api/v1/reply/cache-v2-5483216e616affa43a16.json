@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/cmake-build-debug"
+			"value" : "c:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/cmake-build-debug-coverage"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -191,7 +191,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "--coverage"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS_DEBUG",
@@ -335,7 +335,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : ""
+			"value" : "--coverage"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS_DEBUG",
@@ -1251,7 +1251,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/cmake-build-debug"
+			"value" : "C:/Users/Sigve Langva/CLionProjects/PG4400_V22_Knr1033/cmake-build-debug-coverage"
 		},
 		{
 			"name" : "PG4400_V22_Knr1033_IS_TOP_LEVEL",
@@ -1714,6 +1714,426 @@
 			"value" : "2.0.5"
 		},
 		{
+			"name" : "SDL2MIXER_CFLAGS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-IC:/msys64/mingw64/bin/../include/SDL2;-Dmain=SDL_main"
+		},
+		{
+			"name" : "SDL2MIXER_CFLAGS_I",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_CFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-Dmain=SDL_main"
+		},
+		{
+			"name" : "SDL2MIXER_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
+			"name" : "SDL2MIXER_INCLUDEDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "C:/msys64/mingw64/bin/../include"
+		},
+		{
+			"name" : "SDL2MIXER_INCLUDE_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "C:/msys64/mingw64/bin/../include/SDL2"
+		},
+		{
+			"name" : "SDL2MIXER_LDFLAGS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-LC:/msys64/mingw64/bin/../lib;-lSDL2_mixer;-lmingw32;-lSDL2main;-lSDL2;-mwindows"
+		},
+		{
+			"name" : "SDL2MIXER_LDFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-mwindows"
+		},
+		{
+			"name" : "SDL2MIXER_LIBDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "C:/msys64/mingw64/bin/../lib"
+		},
+		{
+			"name" : "SDL2MIXER_LIBRARIES",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "SDL2_mixer;mingw32;SDL2main;SDL2"
+		},
+		{
+			"name" : "SDL2MIXER_LIBRARY_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "C:/msys64/mingw64/bin/../lib"
+		},
+		{
+			"name" : "SDL2MIXER_LIBS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_LIBS_L",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_LIBS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_LIBS_PATHS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_MODULE_NAME",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "SDL2_mixer"
+		},
+		{
+			"name" : "SDL2MIXER_PREFIX",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "C:/msys64/mingw64/bin/.."
+		},
+		{
+			"name" : "SDL2MIXER_SDL2_mixer_INCLUDEDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_SDL2_mixer_LIBDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_SDL2_mixer_PREFIX",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_SDL2_mixer_VERSION",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_CFLAGS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-IC:/msys64/mingw64/bin/../include/SDL2;-Dmain=SDL_main"
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_CFLAGS_I",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_CFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-Dmain=SDL_main"
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_INCLUDE_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "C:/msys64/mingw64/bin/../include/SDL2"
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_LDFLAGS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-LC:/msys64/mingw64/bin/../lib;-lSDL2_mixer;-lmingw32;-lSDL2main;-lSDL2;-mwindows;-lmingw32;-ldinput8;-lshell32;-lsetupapi;-ladvapi32;-luuid;-lversion;-loleaut32;-lole32;-limm32;-lwinmm;-lgdi32;-luser32;-lm;-Wl,--no-undefined;-lmingw32;-lSDL2main;-lSDL2;-mwindows"
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_LDFLAGS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "-mwindows;-Wl,--no-undefined;-mwindows"
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_LIBDIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_LIBRARIES",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "SDL2_mixer;mingw32;SDL2main;SDL2;mingw32;dinput8;shell32;setupapi;advapi32;uuid;version;oleaut32;ole32;imm32;winmm;gdi32;user32;m;mingw32;SDL2main;SDL2"
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_LIBRARY_DIRS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "C:/msys64/mingw64/bin/../lib"
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_LIBS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_LIBS_L",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_LIBS_OTHER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_STATIC_LIBS_PATHS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "SDL2MIXER_VERSION",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "2.0.4"
+		},
+		{
 			"name" : "SDL2TTF_CFLAGS",
 			"properties" : 
 			[
@@ -2158,6 +2578,18 @@
 			"value" : "1"
 		},
 		{
+			"name" : "__pkg_config_checked_SDL2MIXER",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "1"
+		},
+		{
 			"name" : "__pkg_config_checked_SDL2TTF",
 			"properties" : 
 			[
@@ -2219,6 +2651,70 @@
 		},
 		{
 			"name" : "pkgcfg_lib_SDL2IMAGE_mingw32",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "C:/msys64/mingw64/lib/libmingw32.a"
+		},
+		{
+			"name" : "pkgcfg_lib_SDL2MIXER_SDL2",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "C:/msys64/mingw64/lib/libSDL2.dll.a"
+		},
+		{
+			"name" : "pkgcfg_lib_SDL2MIXER_SDL2_mixer",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "C:/msys64/mingw64/lib/libSDL2_mixer.dll.a"
+		},
+		{
+			"name" : "pkgcfg_lib_SDL2MIXER_SDL2main",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "C:/msys64/mingw64/lib/libSDL2main.a"
+		},
+		{
+			"name" : "pkgcfg_lib_SDL2MIXER_mingw32",
 			"properties" : 
 			[
 				{

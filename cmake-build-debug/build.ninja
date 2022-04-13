@@ -147,6 +147,13 @@ build CMakeFiles/PG4400_V22_Knr1033.dir/Explotion.cpp.obj: CXX_COMPILER__PG4400_
   OBJECT_DIR = CMakeFiles\PG4400_V22_Knr1033.dir
   OBJECT_FILE_DIR = CMakeFiles\PG4400_V22_Knr1033.dir
 
+build CMakeFiles/PG4400_V22_Knr1033.dir/Sound.cpp.obj: CXX_COMPILER__PG4400_V22_Knr1033_Debug C$:/Users/Sigve$ Langva/CLionProjects/PG4400_V22_Knr1033/Sound.cpp || cmake_object_order_depends_target_PG4400_V22_Knr1033
+  DEP_FILE = CMakeFiles\PG4400_V22_Knr1033.dir\Sound.cpp.obj.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -IC:/msys64/mingw64/include/SDL2 -IC:/msys64/mingw64/bin/../include/SDL2
+  OBJECT_DIR = CMakeFiles\PG4400_V22_Knr1033.dir
+  OBJECT_FILE_DIR = CMakeFiles\PG4400_V22_Knr1033.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target PG4400_V22_Knr1033
@@ -155,9 +162,9 @@ build CMakeFiles/PG4400_V22_Knr1033.dir/Explotion.cpp.obj: CXX_COMPILER__PG4400_
 #############################################
 # Link the executable PG4400_V22_Knr1033.exe
 
-build PG4400_V22_Knr1033.exe: CXX_EXECUTABLE_LINKER__PG4400_V22_Knr1033_Debug CMakeFiles/PG4400_V22_Knr1033.dir/main.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Game.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/GameObject.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/TextureManager.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Player.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Laser.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Enemy.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Direction.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/HandleEvents.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Manager.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Background.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Boss.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Text.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Explotion.cpp.obj | C$:/msys64/mingw64/lib/libSDL2main.a C$:/msys64/mingw64/lib/libSDL2.dll.a
+build PG4400_V22_Knr1033.exe: CXX_EXECUTABLE_LINKER__PG4400_V22_Knr1033_Debug CMakeFiles/PG4400_V22_Knr1033.dir/main.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Game.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/GameObject.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/TextureManager.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Player.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Laser.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Enemy.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Direction.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/HandleEvents.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Manager.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Background.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Boss.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Text.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Explotion.cpp.obj CMakeFiles/PG4400_V22_Knr1033.dir/Sound.cpp.obj | C$:/msys64/mingw64/lib/libSDL2main.a C$:/msys64/mingw64/lib/libSDL2.dll.a
   FLAGS = -g
-  LINK_LIBRARIES = C:/msys64/mingw64/lib/libSDL2main.a  C:/msys64/mingw64/lib/libSDL2.dll.a  -lSDL2_image  -lmingw32  -lSDL2main  -lSDL2  -lSDL2_ttf  -lmingw32  -lSDL2main  -lSDL2  -lSDL2_ttf  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = C:/msys64/mingw64/lib/libSDL2main.a  C:/msys64/mingw64/lib/libSDL2.dll.a  -lSDL2_image  -lmingw32  -lSDL2main  -lSDL2  -lSDL2_ttf  -lmingw32  -lSDL2main  -lSDL2  -lSDL2_mixer  -lmingw32  -lSDL2main  -lSDL2  -lSDL2_ttf  -lSDL2_mixer  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\PG4400_V22_Knr1033.dir
   POST_BUILD = cd .
   PRE_LINK = cd .

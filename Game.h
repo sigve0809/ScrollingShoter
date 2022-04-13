@@ -12,6 +12,7 @@
 #include "Manager.h"
 #include <vector>
 #include <SDL_ttf.h>
+#include <SDL_mixer.h>
 
 class Game {
 public:

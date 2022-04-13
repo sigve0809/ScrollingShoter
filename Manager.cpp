@@ -6,6 +6,7 @@
 #include "Manager.h"
 #include "Background.h"
 #include "Explotion.h"
+#include "Sound.h"
 
 
 Manager::Manager(SDL_Renderer *renderer) : renderer(renderer) {
@@ -16,7 +17,6 @@ Manager::Manager(SDL_Renderer *renderer) : renderer(renderer) {
     addGameObject<Player>("../Assets/player2.png", 350,  500, renderer, false);
     addGameObject<Boss>("../Assets/boss.png", 250, -30, 0, 1, 10, renderer, false);
     addGameObject<Text>(renderer, std::to_string(kills));
-
     boss->setNotActive();
     boss->setWidthHeight(80, 80);
 }
@@ -29,18 +29,28 @@ void Manager::update() {
         int rand1 = distribution(generator);
         int rand2 = distribution2(generator);
         if (!boss->isActive())addGameObject<Enemy>("../Assets/spaceship1.png", rand1, -32, rand2, 1, 400, renderer, false);
-        enemyTimer = 500;
+        enemyTimer = maxTimer;
+        if (maxTimer >= 200)maxTimer -= 10;
+        else maxTimer = 200;
     }
+    std::string sFile = "../Assets/LaserSound.mp3";
+
     enemyTimer--;
 
     std::cout << "done" << std::endl;
 
     for(auto e: enemies){
         std::cout << "2\n";
-        if (e->isActive() && e->gunReady()) addGameObject<Laser>("../Assets/Laser.png", e->getX() + e->getWidth()*2-2, e->getY()+3, true, renderer, false);
+        if (e->isActive() && e->gunReady()) {
+            std::shared_ptr<Sound> sound = std::make_shared<Sound>(sFile);
+            sound->play();
+            addGameObject<Laser>("../Assets/Laser.png", e->getX() + e->getWidth()*2-2, e->getY()+3, true, renderer, false);
+        }
     }
     if (boss->isActive() && boss->gunReady()) {
         std::cout << "3\n";
+        std::shared_ptr<Sound> sound = std::make_shared<Sound>(sFile);
+        sound->play();
         addGameObject<Laser>("../Assets/Laser.png", boss->getX() + boss->getWidth(), boss->getY()+boss->getHeight()*2-70, true, renderer, false);
         addGameObject<Laser>("../Assets/Laser.png", boss->getX() + boss->getWidth()-50, boss->getY()+boss->getHeight()*2-100, true, renderer, false);
         addGameObject<Laser>("../Assets/Laser.png", boss->getX() + boss->getWidth()+50, boss->getY()+boss->getHeight()*2-100, true, renderer, false);
@@ -58,6 +68,9 @@ void Manager::update() {
     eH->finished(&elements);
     if (eH->shooting() && shootCount <= 0 &&player->isActive()){
         std::cout << "8\n";
+        std::shared_ptr<Sound> sound = std::make_shared<Sound>(sFile);
+        sound->play();
+        sounds.emplace_back(sound);
         if (count == 1){
             addGameObject<Laser>("../Assets/Laser.png", player->getX() + player->getWidth()*2-2, player->getY()+3, false, renderer, false);
             count = 2;
@@ -68,7 +81,7 @@ void Manager::update() {
         }
         shootCount = 30;
     }
-    if (eH->getKillCount() >= 1) {
+    if (eH->getKillCount() >= 5) {
         std::cout << "10\n";
         addGameObject<Boss>("../Assets/boss.png", 250, -30, 0, 1, 10, renderer, false);
     }

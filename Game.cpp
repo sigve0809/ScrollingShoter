@@ -27,6 +27,8 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
             std::cout << "renderer created" << std::endl;
         }
         if (TTF_Init() == 0) std::cout << "TTF initialised" << std::endl;
+        SDL_Init(SDL_INIT_AUDIO);
+        if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == 0) std::cout <<"Mixer Initialised\n";
         isRunning = true;
     }
     manager = std::make_shared<Manager>(renderer);
@@ -41,6 +43,7 @@ void Game::render() {
 }
 
 void Game::clean() {
+    Mix_Quit();
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();

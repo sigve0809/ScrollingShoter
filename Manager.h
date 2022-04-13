@@ -14,11 +14,12 @@
 #include <random>
 #include <SDL.h>
 #include "Text.h"
+#include "Sound.h"
 
 class Manager {
 
 public:
-    HandleEvents *eH = new HandleEvents();
+    std::shared_ptr<HandleEvents> eH = std::make_shared<HandleEvents>();
     explicit Manager(SDL_Renderer *renderer);
     void update();
     void render();
@@ -35,12 +36,12 @@ private:
     std::vector<std::shared_ptr<GameObject>> elements;
     std::vector<std::shared_ptr<Enemy>> enemies;
     std::vector<std::shared_ptr<Laser>> lasers;
+    std::vector<std::shared_ptr<Sound>> sounds;
     void deleteAll();
-    int added = 0;
-    void resetArray();
     std::default_random_engine generator;
     std::shared_ptr<Text> text;
     int kills = 0;
+    int maxTimer = 50;
 
     void checkForDeath();
 };
