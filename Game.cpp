@@ -29,8 +29,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         if (TTF_Init() == 0) std::cout << "TTF initialised" << std::endl;
         SDL_Init(SDL_INIT_AUDIO);
         if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == 0) std::cout <<"Mixer Initialised\n";
+        Mix_Volume(-1, 20);
         isRunning = true;
     }
+
     manager = std::make_shared<Manager>(renderer);
 }
 void Game::update() {

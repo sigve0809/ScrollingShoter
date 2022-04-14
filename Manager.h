@@ -15,6 +15,7 @@
 #include <SDL.h>
 #include "Text.h"
 #include "Sound.h"
+#include "RestartButton.h"
 
 class Manager {
 
@@ -27,6 +28,7 @@ public:
     std::shared_ptr<T> addGameObject(TArgs&&... args);
     void deleteNotActive();
 private:
+    void restart();
     int count = 500;
     SDL_Renderer *renderer;
     int enemyTimer = 0;
@@ -42,6 +44,8 @@ private:
     std::shared_ptr<Text> text;
     int kills = 0;
     int maxTimer = 50;
+    std::shared_ptr<Sound> music;
+    std::shared_ptr<RestartButton> restartButton;
 
     void checkForDeath();
 };

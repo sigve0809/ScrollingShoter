@@ -38,10 +38,7 @@ void GameObject::setWidthHeight(int w, int h) {
 }
 
 GameObject::GameObject(SDL_Renderer *renderer) {
-    xpos = 700;
-    ypos = 50;
-    width = 32;
-    height = 32;
+
 }
 
 

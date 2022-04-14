@@ -5,27 +5,31 @@
 #include "Sound.h"
 
 void Sound::play() {
-    int h = getChannel();
+    h = getChannel();
     std::cout << "Channel: " << h << std::endl;
     Mix_PlayChannel(h, soundEffect, 0);
 }
 
 Sound::Sound(std::string soundFile) : soundEffect(Mix_LoadWAV(soundFile.c_str())) {}
 
-Sound::~Sound() {
-}
+Sound::Sound() {}
+
 
 void Sound::update() {
-    if (timer == 0) {
+    if (timer <= 0) {
         done = true;
-    }
-}
-
-bool Sound::getIsDone() {
-    if (timer <= 0){
+        std::cout << "free\n";
+        Mix_HaltChannel(h);
         Mix_FreeChunk(soundEffect);
-        return true;
     }
     timer--;
-    return false;
 }
+
+void Sound::playSong() {
+    Mix_PlayMusic(song, -1);
+}
+
+void Sound::stopSong() {
+    Mix_HaltMusic();
+}
+

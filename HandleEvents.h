@@ -7,14 +7,16 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Boss.h"
+#include "RestartButton.h"
+
 #include <memory>
 
 class HandleEvents {
 public:
     //HandleEvents();
 
-    void input(std::shared_ptr<Player> *player);
-    void collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector<std::shared_ptr<Laser>> *l, std::shared_ptr<Player> *player, std::shared_ptr<Boss> *boss);
+    void input(std::shared_ptr<Player> *player, std::shared_ptr<RestartButton> restartButton);
+    void collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector<std::shared_ptr<Laser>> *l, std::shared_ptr<Player> *player, std::shared_ptr<Boss> *boss, std::shared_ptr<RestartButton> restartButton);
 
     void finished(std::vector<std::shared_ptr<GameObject>> *array);
     bool shooting() const{return isShooting;}

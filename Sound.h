@@ -10,22 +10,32 @@
 #include <SDL_mixer.h>
 inline int getChannel(){
     static int channel = 0;
+    std::cout << channel << std::endl;
     if(channel < 8) return channel++;
-    else return channel -= 7;
+    else{
+        channel = 0;
+        return channel++;
+    }
 }
 class Sound {
 public:
     Sound(std::string soundFile);
-    void update();
-    virtual ~Sound();
+    Sound();
 
+    void update();
+    //virtual ~Sound();
+    void playSong();
+    void stopSong();
     void play();
     bool getIsDone();
+    bool isDone(){return done;}
 
 private:
     Mix_Chunk *soundEffect;
+    Mix_Music *song = Mix_LoadMUS("../Assets/Androids.wav");
     bool done = false;
-    int timer = 10;
+    int timer = 60;
+    int h;
 };
 
 

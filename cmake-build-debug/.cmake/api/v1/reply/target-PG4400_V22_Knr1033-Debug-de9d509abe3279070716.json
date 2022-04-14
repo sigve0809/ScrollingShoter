@@ -52,7 +52,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "--coverage -g"
+					"fragment" : "-g"
 				},
 				{
 					"fragment" : "-std=gnu++20"
@@ -94,7 +94,8 @@
 				21,
 				23,
 				25,
-				27
+				27,
+				29
 			]
 		}
 	],
@@ -104,7 +105,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "--coverage -g",
+				"fragment" : "-g",
 				"role" : "flags"
 			},
 			{
@@ -225,7 +226,8 @@
 				21,
 				23,
 				25,
-				27
+				27,
+				29
 			]
 		},
 		{
@@ -245,7 +247,8 @@
 				22,
 				24,
 				26,
-				28
+				28,
+				30
 			]
 		}
 	],
@@ -409,6 +412,17 @@
 		{
 			"backtrace" : 1,
 			"path" : "Sound.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "RestartButton.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "RestartButton.h",
 			"sourceGroupIndex" : 1
 		}
 	],

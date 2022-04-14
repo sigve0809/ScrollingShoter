@@ -16,58 +16,53 @@ Manager::Manager(SDL_Renderer *renderer) : renderer(renderer) {
     addGameObject<Background>("../Assets/Background.png", 0, 0, renderer, true);
     addGameObject<Player>("../Assets/player2.png", 350,  500, renderer, false);
     addGameObject<Boss>("../Assets/boss.png", 250, -30, 0, 1, 10, renderer, false);
-    addGameObject<Text>(renderer, std::to_string(kills));
+    addGameObject<Text>(renderer, std::to_string(kills), 700, 50, 32, 32);
     boss->setNotActive();
     boss->setWidthHeight(80, 80);
+    music = std::make_shared<Sound>();
+    music->playSong();
+    restartButton = std::make_shared<RestartButton>("Restart", renderer, (800/2)-(128), (600/2)-(32), 128, 32);
 }
 
 void Manager::update() {
+
     if (enemyTimer <= 0){
-        std::cout << "4\n";
         std::uniform_int_distribution<int> distribution(0,800-64);
         std::uniform_int_distribution<int> distribution2(-1,1);
         int rand1 = distribution(generator);
         int rand2 = distribution2(generator);
-        if (!boss->isActive())addGameObject<Enemy>("../Assets/spaceship1.png", rand1, -32, rand2, 1, 400, renderer, false);
+        if (!boss->isActive() && restartButton->getRestarted())addGameObject<Enemy>("../Assets/spaceship1.png", rand1, -32, rand2, 1, 400, renderer, false);
         enemyTimer = maxTimer;
         if (maxTimer >= 200)maxTimer -= 10;
         else maxTimer = 200;
     }
     std::string sFile = "../Assets/LaserSound.mp3";
-
     enemyTimer--;
-
-    std::cout << "done" << std::endl;
-
     for(auto e: enemies){
-        std::cout << "2\n";
         if (e->isActive() && e->gunReady()) {
             std::shared_ptr<Sound> sound = std::make_shared<Sound>(sFile);
             sound->play();
+            sounds.emplace_back(sound);
             addGameObject<Laser>("../Assets/Laser.png", e->getX() + e->getWidth()*2-2, e->getY()+3, true, renderer, false);
         }
     }
     if (boss->isActive() && boss->gunReady()) {
-        std::cout << "3\n";
         std::shared_ptr<Sound> sound = std::make_shared<Sound>(sFile);
         sound->play();
+        sounds.emplace_back(sound);
         addGameObject<Laser>("../Assets/Laser.png", boss->getX() + boss->getWidth(), boss->getY()+boss->getHeight()*2-70, true, renderer, false);
         addGameObject<Laser>("../Assets/Laser.png", boss->getX() + boss->getWidth()-50, boss->getY()+boss->getHeight()*2-100, true, renderer, false);
         addGameObject<Laser>("../Assets/Laser.png", boss->getX() + boss->getWidth()+50, boss->getY()+boss->getHeight()*2-100, true, renderer, false);
     }
 
     deleteNotActive();
-    std::cout << "5\n";
 
-    eH->input(&player);
-    std::cout << "6\n";
+    eH->input(&player, restartButton);
 
-    eH->collision(&enemies, &lasers, &player, &boss);
-    std::cout << "7\n";
+    eH->collision(&enemies, &lasers, &player, &boss, restartButton);
     checkForDeath();
     eH->finished(&elements);
     if (eH->shooting() && shootCount <= 0 &&player->isActive()){
-        std::cout << "8\n";
         std::shared_ptr<Sound> sound = std::make_shared<Sound>(sFile);
         sound->play();
         sounds.emplace_back(sound);
@@ -82,30 +77,33 @@ void Manager::update() {
         shootCount = 30;
     }
     if (eH->getKillCount() >= 5) {
-        std::cout << "10\n";
         addGameObject<Boss>("../Assets/boss.png", 250, -30, 0, 1, 10, renderer, false);
     }
     if (eH->getKills() > kills){
         kills++;
         text->setNotActive();
-        addGameObject<Text>(renderer, std::to_string(kills));
+        addGameObject<Text>(renderer, std::to_string(kills), 700, 50, 32, 32);
     }
     shootCount--;
     for (auto it = elements.begin();it !=elements.end();++it){
         if (it.operator*()->isActive()){
-            std::cout << "1\n";
             it.operator*()->Update();
         }
     }
+    for(auto it = sounds.begin(); it != sounds.end(); ++it) {
+        it.operator*()->update();
+    }
+    if (!restartButton->getRestarted()) restart();
+
     if (!eH->running()) deleteAll();
 
 }
 void Manager::render() {
     SDL_RenderClear(renderer);
-
     for (auto it = elements.begin();it !=elements.end();++it){
         if (it.operator*()->isActive()) it.operator*()->Render(renderer);
     }
+    if (!restartButton->getRestarted())restartButton->render(renderer);
     SDL_RenderPresent(renderer);
 }
 
@@ -135,6 +133,10 @@ void Manager::deleteNotActive() {
             std::remove_if(elements.begin(), elements.end(), [](auto & o){
                 return !o->isActive();}),
             elements.end());
+    sounds.erase(
+            std::remove_if(sounds.begin(), sounds.end(), [](auto & o){
+                return o->isDone();}),
+            sounds.end());
 
 }
 
@@ -143,6 +145,7 @@ void Manager::deleteAll(){
     elements.clear();
     enemies.clear();
     lasers.clear();
+    music->stopSong();
     std::cout <<"all deleted\n";
 }
 void Manager::checkForDeath(){
@@ -160,6 +163,10 @@ void Manager::checkForDeath(){
         g->setWidthHeight(boss->getWidth(), boss->getHeight());
         boss->setExplotion();
     }
+}
 
-
+void Manager::restart() {
+    restartButton->update();
+    player->setNotActive();
+    if (restartButton->getRestarted()) addGameObject<Player>("../Assets/player2.png", 350,  500, renderer, false);
 }

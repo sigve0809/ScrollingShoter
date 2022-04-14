@@ -11,7 +11,7 @@
 
 class Text : public GameObject{
 public:
-    Text(SDL_Renderer *renderer, std::string string);
+    Text(SDL_Renderer *renderer, std::string string, int x, int y, int width, int height);
     void Update() override{
 
     }
@@ -19,6 +19,15 @@ public:
         GameObject::Update();
         SDL_RenderCopy(renderer, objTexture, NULL, &destRect);
     }
+    int getX(){
+        return xpos;
+    }
+    int getY(){
+        return ypos;
+    }
+    int width(){return getWidth();}
+    int height(){return getHeight();}
+
 
 private:
     SDL_Renderer *renderer1;

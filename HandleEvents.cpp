@@ -5,7 +5,7 @@
 #include "HandleEvents.h"
 //HandleEvents::HandleEvents() {}
 
-void HandleEvents::input(std::shared_ptr<Player> *player) {
+void HandleEvents::input(std::shared_ptr<Player> *player, std::shared_ptr<RestartButton> restartButton) {
     SDL_Event event;
     if(SDL_PollEvent(&event))
     {
@@ -29,6 +29,7 @@ void HandleEvents::input(std::shared_ptr<Player> *player) {
                 case SDLK_a:
                     player->operator*().xVel = -1;
                     break;
+
                 case SDLK_ESCAPE:
                     isRunning = false;
                     break;
@@ -62,11 +63,15 @@ void HandleEvents::input(std::shared_ptr<Player> *player) {
         {
             isRunning = false; // avslutt
         }
+        if(event.type == SDL_MOUSEMOTION) restartButton->getHover(event.motion.x, event.motion.y);
+        if (event.type == SDL_MOUSEBUTTONDOWN) {
+            restartButton->getClicked();
+        }
     }
 
 }
 
-void HandleEvents::collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector<std::shared_ptr<Laser>> *l, std::shared_ptr<Player> *player, std::shared_ptr<Boss> *boss) {
+void HandleEvents::collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector<std::shared_ptr<Laser>> *l, std::shared_ptr<Player> *player, std::shared_ptr<Boss> *boss, std::shared_ptr<RestartButton> restartButton) {
     if(killCount >=5) killCount = 0;
     for(auto laser: *l){
         if (laser->isActive() && !laser->isEnemy()){
@@ -91,6 +96,7 @@ void HandleEvents::collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector
             if (player->operator*().isActive() && player->operator*().hit(laser->getX(), laser->getY())) {
                 player->operator*().setNotActive();
                 player->operator*().setExplotion();
+                restartButton->setOrMoveMenu();
                 laser->setNotActive();
             }
         }
