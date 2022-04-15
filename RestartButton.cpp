@@ -7,6 +7,7 @@
 
 
 void RestartButton::update() {
+    text->Update();
     checkState();
 }
 
@@ -21,8 +22,6 @@ bool RestartButton::getHover(int x, int y) {
     else {
         state = OFF;
     }
-    lastX = x;
-    lastY = y;
     return false;
 }
 
@@ -47,10 +46,11 @@ void RestartButton::checkState() {
         state = OFF;
     }
     if (state == HOVER) {
-        color = {220, 220, 220, 100};
+        color = {220, 220, 220, 255};
     }
     else{
-        color = {220, 220, 220, 255};
+        color = {140, 140, 140, 0};
+
     }
 }
 

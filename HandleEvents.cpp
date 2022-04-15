@@ -113,6 +113,11 @@ void HandleEvents::finished(std::vector<std::shared_ptr<GameObject>> *array) {
     }
 }
 
+void HandleEvents::restart(){
+    kills = 0;
+    killCount = 0;
+}
+
 
 
 

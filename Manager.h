@@ -48,6 +48,12 @@ private:
     std::shared_ptr<RestartButton> restartButton;
 
     void checkForDeath();
+
+    void deleteEnemy();
+
+    void gunReady();
+
+    void addEnemy();
 };
 
 

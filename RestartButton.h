@@ -29,8 +29,6 @@ public:
 private:
     std::shared_ptr<Text> text;
     bool restarted = true;
-    int lastX = 0;
-    int lastY = 0;
     SDL_Rect rect;
     SDL_Color color;
     State state;

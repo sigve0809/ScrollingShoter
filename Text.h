@@ -13,10 +13,10 @@ class Text : public GameObject{
 public:
     Text(SDL_Renderer *renderer, std::string string, int x, int y, int width, int height);
     void Update() override{
+        GameObject::Update();
 
     }
     void Render(SDL_Renderer *renderer) override{
-        GameObject::Update();
         SDL_RenderCopy(renderer, objTexture, NULL, &destRect);
     }
     int getX(){

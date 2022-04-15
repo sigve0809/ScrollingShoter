@@ -23,12 +23,15 @@ public:
     bool running() const{return isRunning;}
     int getKillCount() const{return killCount;}
     int getKills() const{return kills;}
+    void restart();
+
 
 private:
     bool isRunning = true;
     bool isShooting = false;
     int killCount = 0;
     int kills = 0;
+
 };
 
 
