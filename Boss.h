@@ -20,7 +20,7 @@ public:
     void setIsActive(){
         active = true;
     }
-    int getHealth(){
+    [[nodiscard]] int getHealth() const{
         return health;
     }
 

@@ -10,14 +10,13 @@ class Direction {
 public:
     Direction(int x, int y, int maxY);
 
-    int getX() const;
+    [[nodiscard]] int getX() const;
 
     void setX();
 
-    int getY() const;
+    [[nodiscard]] int getY() const;
 
-    void setY();
-    int getMaxY();
+    int getMaxY() const;
     void giveXval(int xV);
     void giveYval(int yV);
 private:

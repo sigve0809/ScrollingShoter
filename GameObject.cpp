@@ -11,7 +11,6 @@ GameObject::GameObject(const char *texturesheet, int x, int y, SDL_Renderer *ren
     background = b;
 }
 
-GameObject::~GameObject() {}
 
 void GameObject::Update() {
     srcRect.h = height;

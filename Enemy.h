@@ -19,26 +19,19 @@ public:
     Enemy(const char *texturesheet, int x, int y, int patternX, int patternY, int maxY, SDL_Renderer *renderer, bool b);
 
 
-    bool isAlive(){return alive;}
     void Update() override;
     void Render(SDL_Renderer *renderer) override;
     virtual bool hit(int x, int y){
         if(x > xpos && x< xpos+(getWidth()*2) && y > ypos && y< ypos+(getHeight()*2)) {
-            alive = false;
             return true;
         }
         return false;
     }
 
-    bool gunReady(){
+    [[nodiscard]] bool gunReady() const{
         return canShoot;
     }
-    void collide();
     void getDirection();
-    int getShootCol() {return shootCool;}
-    void setGunReady(){
-        canShoot = true;
-    }
 protected:
     int shootCool = 0;
 
@@ -46,7 +39,6 @@ protected:
 private:
     bool canShoot = true;
 
-    bool alive = true;
     int pY;
     int pX;
     int mY;

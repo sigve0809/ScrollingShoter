@@ -10,9 +10,8 @@
 #include <iostream>
 class GameObject {
 public:
-    GameObject(SDL_Renderer *renderer);
+    explicit GameObject(SDL_Renderer *renderer);
     GameObject(const char *texturesheet, int x, int y, SDL_Renderer *renderer, bool b);
-    ~GameObject();
 
     virtual void Update();
 
@@ -26,41 +25,38 @@ public:
     void setYpos(int pos){
         ypos = pos;
     }
-    int getY(){
+
+    virtual int getY(){
         return ypos;
     }
-    int getX(){
+
+    virtual int getX(){
         return xpos;
     }
     void destroyGameObject();
     void setWidthHeight(int w, int h);
-    int getWidth(){
+    [[nodiscard]] int getWidth() const{
         return width;
     }
-    int getHeight(){
+    [[nodiscard]] int getHeight() const{
         return height;
     }
-    bool isActive(){
+    [[nodiscard]] bool isActive() const{
         return active;
     }
-    void setCanFree(){
-        canFree = true;
-    }
-    bool getCanFree(){
-        return canFree;
-    }
-    bool isBackground(){return background;}
+
+    [[nodiscard]] bool isBackground() const{return background;}
     void setNotActive(){
         destroyGameObject();
         active = false;
     }
     void setID(int x){id = x;}
-    int getID(){return id;}
+    [[nodiscard]] int getID() const{return id;}
     void setExplotion(){
         if (explotionReady) explotionReady = false;
         else explotionReady = true;
     }
-    bool getExplotion(){
+    [[nodiscard]] bool getExplotion() const{
         return explotionReady;
     }
 private:

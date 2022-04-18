@@ -5,9 +5,6 @@
 #include "Game.h"
 std::shared_ptr<Manager> manager = nullptr;
 
-Game::Game() {};
-
-Game::~Game() {};
 
 SDL_Renderer *Game::renderer = nullptr;
 
@@ -29,7 +26,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height, bo
         if (TTF_Init() == 0) std::cout << "TTF initialised" << std::endl;
         SDL_Init(SDL_INIT_AUDIO);
         if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == 0) std::cout <<"Mixer Initialised\n";
-        Mix_Volume(-1, 20);
+        Mix_Volume(-1, 10);
         isRunning = true;
     }
 
@@ -48,8 +45,8 @@ void Game::clean() {
     Mix_Quit();
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
-    SDL_Quit();
     TTF_Quit();
+    SDL_Quit();
     std::cout << "Game Cleaned" << std::endl;
 }
 

@@ -19,16 +19,14 @@ inline int getChannel(){
 }
 class Sound {
 public:
-    Sound(std::string soundFile);
+    explicit Sound(const std::string& soundFile);
     Sound();
 
     void update();
-    //virtual ~Sound();
     void playSong();
     void stopSong();
     void play();
-    bool getIsDone();
-    bool isDone(){return done;}
+    [[nodiscard]] bool isDone() const{return done;}
 
 private:
     Mix_Chunk *soundEffect;

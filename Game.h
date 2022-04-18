@@ -16,14 +16,13 @@
 
 class Game {
 public:
-    Game();
-    ~Game();
+
 
     void init(const char *title, int xpos, int ypos, int width, int height, bool fullscreen);
     void update();
-    void render();
+    static void render();
     void clean();
-    bool running() const{
+    [[nodiscard]] bool running() const{
         return isRunning;
     }
     static SDL_Renderer *renderer;

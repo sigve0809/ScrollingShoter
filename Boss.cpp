@@ -22,7 +22,7 @@ void Boss::Update() {
 }
 
 void Boss::Render(SDL_Renderer *renderer) {
-    SDL_RenderCopyEx(renderer, objTexture, NULL, &destRect, 0.0, NULL, SDL_FLIP_VERTICAL);
+    SDL_RenderCopyEx(renderer, objTexture, nullptr, &destRect, 0.0, nullptr, SDL_FLIP_VERTICAL);
 
 
 }

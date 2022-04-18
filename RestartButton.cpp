@@ -54,7 +54,7 @@ void RestartButton::checkState() {
     }
 }
 
-RestartButton::RestartButton(std::string string, SDL_Renderer *renderer, int x, int y, int width, int height) {
+RestartButton::RestartButton(const std::string& string, SDL_Renderer *renderer, int x, int y, int width, int height) {
     text = std::make_shared<Text>(renderer, string, x, y, width, height);
     rect = {text->getX()-10, text->getY()-10, text->getWidth()*2+20, text->getHeight()*2+20};
     color = {255, 255, 255, 140};

@@ -5,7 +5,7 @@
 #include "HandleEvents.h"
 //HandleEvents::HandleEvents() {}
 
-void HandleEvents::input(std::shared_ptr<Player> *player, std::shared_ptr<RestartButton> restartButton) {
+void HandleEvents::input(std::shared_ptr<Player> *player, const std::shared_ptr<RestartButton>& restartButton) {
     SDL_Event event;
     if(SDL_PollEvent(&event))
     {
@@ -73,9 +73,9 @@ void HandleEvents::input(std::shared_ptr<Player> *player, std::shared_ptr<Restar
 
 void HandleEvents::collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector<std::shared_ptr<Laser>> *l, std::shared_ptr<Player> *player, std::shared_ptr<Boss> *boss, std::shared_ptr<RestartButton> restartButton) {
     if(killCount >=5) killCount = 0;
-    for(auto laser: *l){
+    for(const auto& laser: *l){
         if (laser->isActive() && !laser->isEnemy()){
-            for (auto enemy : *e) {
+            for (const auto& enemy : *e) {
                 if(enemy->isActive() && enemy->hit(laser->getX(), laser->getY())){
                     laser->setNotActive();
                     enemy->setNotActive();

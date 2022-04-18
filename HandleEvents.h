@@ -13,16 +13,14 @@
 
 class HandleEvents {
 public:
-    //HandleEvents();
-
-    void input(std::shared_ptr<Player> *player, std::shared_ptr<RestartButton> restartButton);
+    void input(std::shared_ptr<Player> *player, const std::shared_ptr<RestartButton>& restartButton);
     void collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector<std::shared_ptr<Laser>> *l, std::shared_ptr<Player> *player, std::shared_ptr<Boss> *boss, std::shared_ptr<RestartButton> restartButton);
 
-    void finished(std::vector<std::shared_ptr<GameObject>> *array);
-    bool shooting() const{return isShooting;}
-    bool running() const{return isRunning;}
-    int getKillCount() const{return killCount;}
-    int getKills() const{return kills;}
+    static void finished(std::vector<std::shared_ptr<GameObject>> *array);
+    [[nodiscard]] bool shooting() const{return isShooting;}
+    [[nodiscard]] bool running() const{return isRunning;}
+    [[nodiscard]] int getKillCount() const{return killCount;}
+    [[nodiscard]] int getKills() const{return kills;}
     void restart();
 
 

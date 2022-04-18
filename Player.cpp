@@ -23,14 +23,10 @@ void Player::Update() {
         counter = 10;
     }
 
-    //std::cout << xpos << std::endl;
-
     destRect.x = xpos;
     destRect.y = ypos;
-
     destRect.w = getWidth()*2;
     destRect.h = getHeight()*2;
-    //GameObject::Update();
     xpos += xVel*2;
     ypos += yVel*2;
     if(ypos < 5) setYpos(5);

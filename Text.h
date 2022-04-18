@@ -17,12 +17,12 @@ public:
 
     }
     void Render(SDL_Renderer *renderer) override{
-        SDL_RenderCopy(renderer, objTexture, NULL, &destRect);
+        SDL_RenderCopy(renderer, objTexture, nullptr, &destRect);
     }
-    int getX(){
+    int getX() override{
         return xpos;
     }
-    int getY(){
+    int getY() override{
         return ypos;
     }
     int width(){return getWidth();}

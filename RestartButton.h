@@ -12,7 +12,7 @@
 
 class RestartButton {
 public:
-    RestartButton(std::string string, SDL_Renderer *renderer, int x, int y, int width, int height);
+    RestartButton(const std::string& string, SDL_Renderer *renderer, int x, int y, int width, int height);
 
     enum State {OFF, HOVER, CLICKED};
     void update();
@@ -21,7 +21,7 @@ public:
         if (restarted) restarted = false;
         else restarted = true;
     }
-    bool getRestarted(){return restarted;}
+    [[nodiscard]] bool getRestarted() const{return restarted;}
     bool getHover(int x, int y);
     bool getClicked();
     void checkState();
@@ -29,8 +29,8 @@ public:
 private:
     std::shared_ptr<Text> text;
     bool restarted = true;
-    SDL_Rect rect;
-    SDL_Color color;
+    SDL_Rect rect{};
+    SDL_Color color{};
     State state;
 
 };

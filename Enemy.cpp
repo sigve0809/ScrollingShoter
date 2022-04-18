@@ -13,7 +13,6 @@ void Enemy::Update() {
     ypos += yVel;
     if (xpos <= 0 || xpos >= 800 - getWidth()*2) {
         a->setX();
-        a->getX();
     }
 
     yVel = a->getY();
@@ -31,7 +30,7 @@ void Enemy::getDirection() {
 }
 
 void Enemy::Render(SDL_Renderer *renderer) {
-    SDL_RenderCopyEx(renderer, objTexture, NULL, &destRect, 0.0, NULL, SDL_FLIP_VERTICAL);
+    SDL_RenderCopyEx(renderer, objTexture, nullptr, &destRect, 0.0, nullptr, SDL_FLIP_VERTICAL);
 
 }
 

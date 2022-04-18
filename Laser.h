@@ -13,7 +13,7 @@ class Laser : public GameObject{
 
 public:
     Laser(const char *texturesheet, int x, int y, bool enemy, SDL_Renderer *renderer, bool b);
-    bool isEnemy(){return enemy;}
+    [[nodiscard]] bool isEnemy() const{return enemy;}
     void Update() override;
     void Render(SDL_Renderer *renderer) override;
 

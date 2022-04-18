@@ -19,16 +19,13 @@ int Direction::getY() const {
     return y;
 }
 
-void Direction::setY() {
-    Direction::y *= -1;
-}
 void Direction::giveXval(int xV){
     x = xV;
 }
 void Direction::giveYval(int yV){
     y = yV;
 }
-int Direction::getMaxY() {
+int Direction::getMaxY() const {
     return maxY;
 }
 

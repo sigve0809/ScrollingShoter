@@ -14,7 +14,7 @@ Manager::Manager(SDL_Renderer *renderer) : renderer(renderer) {
     shootCount = 0;
     addGameObject<Background>("../Assets/Background.png", 0, -600, renderer, true);
     addGameObject<Background>("../Assets/Background.png", 0, 0, renderer, true);
-    addGameObject<Player>("../Assets/player2.png", 350,  500, renderer, false);
+    player = addGameObject<Player>("../Assets/player2.png", 350,  500, renderer, false);
     addGameObject<Boss>("../Assets/boss.png", 250, -30, 0, 1, 10, renderer, false);
     addGameObject<Text>(renderer, std::to_string(kills), 700, 50, 32, 32);
     boss->setNotActive();
@@ -66,7 +66,6 @@ std::shared_ptr<T> Manager::addGameObject(TArgs &&... args) {
     if (std::is_same<T, Boss>::value) boss = std::dynamic_pointer_cast<Boss>(l);
     else if (std::is_same<T, Enemy>::value) enemies.emplace_back(std::dynamic_pointer_cast<Enemy>(l));
     else if (std::is_same<T, Laser>::value) lasers.emplace_back(std::dynamic_pointer_cast<Laser>(l));
-    else if (std::is_same<T, Player>::value) player = std::dynamic_pointer_cast<Player>(l);
     else if (std::is_same<T, Text>::value) text = std::dynamic_pointer_cast<Text>(l);
     elements.emplace_back(l);
     return std::dynamic_pointer_cast<T>(l);
@@ -124,7 +123,7 @@ void Manager::restart() {
     player->setNotActive();
 
     if (restartButton->getRestarted()) {
-        addGameObject<Player>("../Assets/player2.png", 350,  500, renderer, false);
+        player = addGameObject<Player>("../Assets/player2.png", 350,  500, renderer, false);
         deleteEnemy();
         kills = 0;
         text->setNotActive();
@@ -134,8 +133,8 @@ void Manager::restart() {
 }
 
 void Manager::deleteEnemy(){
-    for(std::shared_ptr<Enemy> enemy: enemies) if (enemy->isActive()) enemy->setNotActive();
-    for(std::shared_ptr<Laser> laser: lasers) if (laser->isActive()) laser->setNotActive();
+    for(const std::shared_ptr<Enemy>& enemy: enemies) if (enemy->isActive()) enemy->setNotActive();
+    for(const std::shared_ptr<Laser>& laser: lasers) if (laser->isActive()) laser->setNotActive();
 
     if (boss->isActive())boss->setNotActive();
 }

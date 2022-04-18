@@ -10,7 +10,7 @@ void Sound::play() {
     Mix_PlayChannel(h, soundEffect, 0);
 }
 
-Sound::Sound(std::string soundFile) : soundEffect(Mix_LoadWAV(soundFile.c_str())) {}
+Sound::Sound(const std::string& soundFile) : soundEffect(Mix_LoadWAV(soundFile.c_str())) {}
 
 Sound::Sound() {}
 
@@ -21,6 +21,7 @@ void Sound::update() {
         std::cout << "free\n";
         Mix_HaltChannel(h);
         Mix_FreeChunk(soundEffect);
+        soundEffect = nullptr;
     }
     timer--;
 }
@@ -31,5 +32,7 @@ void Sound::playSong() {
 
 void Sound::stopSong() {
     Mix_HaltMusic();
+    Mix_FreeMusic(song);
+    song = nullptr;
 }
 

@@ -22,7 +22,6 @@ public:
         }
         return false;
     }
-    bool isAlive(){return alive;}
     void Update() override;
     void Render(SDL_Renderer *renderer) override;
 
