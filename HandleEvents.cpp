@@ -10,6 +10,7 @@ void HandleEvents::input(std::shared_ptr<Player> *player, const std::shared_ptr<
     if(SDL_PollEvent(&event))
     {
 // Sjekk om det var en key-event
+        //Check for shooting, movement and gameexit input
         if (event.type == SDL_KEYDOWN)
         {
             switch (event.key.keysym.sym) {
@@ -58,11 +59,12 @@ void HandleEvents::input(std::shared_ptr<Player> *player, const std::shared_ptr<
             }
         }
 
-// Sjekk om brukeren trykket krysset (X) i vindu
+        //Check if user clicks "X" in window
         else if (event.type == SDL_QUIT)
         {
             isRunning = false; // avslutt
         }
+        //Check for hover and restart click
         if(event.type == SDL_MOUSEMOTION) restartButton->getHover(event.motion.x, event.motion.y);
         if (event.type == SDL_MOUSEBUTTONDOWN) {
             restartButton->getClicked();
@@ -71,8 +73,11 @@ void HandleEvents::input(std::shared_ptr<Player> *player, const std::shared_ptr<
 
 }
 
+//Collition handeling
 void HandleEvents::collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector<std::shared_ptr<Laser>> *l, std::shared_ptr<Player> *player, std::shared_ptr<Boss> *boss, std::shared_ptr<RestartButton> restartButton) {
     if(killCount >=5) killCount = 0;
+
+    //Checking if laser is hitting an enemy
     for(const auto& laser: *l){
         if (laser->isActive() && !laser->isEnemy()){
             for (const auto& enemy : *e) {
@@ -92,6 +97,7 @@ void HandleEvents::collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector
                 }
             }
         }
+        //Checking if a laser is hitting player and changing state of player, laser and restartbutton if this is the case
         else if (laser->isActive() && laser->isEnemy()){
             if (player->operator*().isActive() && player->operator*().hit(laser->getX(), laser->getY())) {
                 player->operator*().setNotActive();
@@ -103,6 +109,7 @@ void HandleEvents::collision(std::vector<std::shared_ptr<Enemy>> *e, std::vector
     }
 }
 
+//Checking if laser and enemies is out of the map
 void HandleEvents::finished(std::vector<std::shared_ptr<GameObject>> *array) {
 
     for(auto it = array->begin();it !=array->end();++it) {
@@ -113,6 +120,7 @@ void HandleEvents::finished(std::vector<std::shared_ptr<GameObject>> *array) {
     }
 }
 
+//Reset kills in case of restart
 void HandleEvents::restart(){
     kills = 0;
     killCount = 0;

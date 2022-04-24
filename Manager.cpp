@@ -8,9 +8,8 @@
 #include "Explotion.h"
 #include "Sound.h"
 
-
+//initialising necessary gameobjects
 Manager::Manager(SDL_Renderer *renderer) : renderer(renderer) {
-
     shootCount = 0;
     addGameObject<Background>("../Assets/Background.png", 0, -600, renderer, true);
     addGameObject<Background>("../Assets/Background.png", 0, 0, renderer, true);
@@ -24,8 +23,8 @@ Manager::Manager(SDL_Renderer *renderer) : renderer(renderer) {
     restartButton = std::make_shared<RestartButton>("Restart", renderer, (800/2)-(128), (600/2)-(32), 128, 32);
 }
 
+//Keeps game updated and handles
 void Manager::update() {
-
     addEnemy();
     gunReady();
     deleteNotActive();
@@ -51,6 +50,8 @@ void Manager::update() {
     if (!restartButton->getRestarted()) restart();
     if (!eH->running()) deleteAll();
 }
+
+//Render all elements
 void Manager::render() {
     SDL_RenderClear(renderer);
     for (auto it = elements.begin();it !=elements.end();++it){
@@ -60,6 +61,7 @@ void Manager::render() {
     SDL_RenderPresent(renderer);
 }
 
+//function to add game object to the right vectors
 template<class T, class... TArgs>
 std::shared_ptr<T> Manager::addGameObject(TArgs &&... args) {
     std::shared_ptr<T> l = std::make_shared<T>(std::forward<TArgs>(args)...);
@@ -71,6 +73,7 @@ std::shared_ptr<T> Manager::addGameObject(TArgs &&... args) {
     return std::dynamic_pointer_cast<T>(l);
 }
 
+//Method to delete from lists when they're no longer active
 void Manager::deleteNotActive() {
 
     enemies.erase(
@@ -91,7 +94,7 @@ void Manager::deleteNotActive() {
             sounds.end());
 
 }
-
+//Cleaning up lists
 void Manager::deleteAll(){
     std::for_each(elements.begin(), elements.end(), [](std::shared_ptr<GameObject> &ob) { if (ob->isActive()) ob->setNotActive(); });
     elements.clear();
@@ -100,6 +103,8 @@ void Manager::deleteAll(){
     music->stopSong();
     std::cout <<"all deleted\n";
 }
+
+//Creates explotion at the occurence of death of enemy and player
 void Manager::checkForDeath(){
     std::for_each(enemies.begin(), enemies.end(), [this](std::shared_ptr<Enemy> &ob) {
         if (!ob->isActive()){
@@ -117,11 +122,11 @@ void Manager::checkForDeath(){
     }
 }
 
+//At the case of the players death, this method is called to get the option of restart
 void Manager::restart() {
     restartButton->update();
 
     player->setNotActive();
-
     if (restartButton->getRestarted()) {
         player = addGameObject<Player>("../Assets/player2.png", 350,  500, renderer, false);
         deleteEnemy();
@@ -132,12 +137,15 @@ void Manager::restart() {
     }
 }
 
+//Setting all gameobjects to notActive, so all is deleted
 void Manager::deleteEnemy(){
     for(const std::shared_ptr<Enemy>& enemy: enemies) if (enemy->isActive()) enemy->setNotActive();
     for(const std::shared_ptr<Laser>& laser: lasers) if (laser->isActive()) laser->setNotActive();
 
     if (boss->isActive())boss->setNotActive();
 }
+
+//Checking if enemy and player should shoot
 void Manager::gunReady(){
     std::string sFile = "../Assets/LaserSound.mp3";
     for(auto e: enemies){
@@ -171,6 +179,8 @@ void Manager::gunReady(){
         shootCount = 30;
     }
 }
+
+//Adds enemy to a "random" position or adds a new boss depending on the killcount
 void Manager::addEnemy(){
     if (enemyTimer <= 0){
         std::uniform_int_distribution<int> distribution(0,800-64);

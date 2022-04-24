@@ -50,7 +50,6 @@ public:
         destroyGameObject();
         active = false;
     }
-    void setID(int x){id = x;}
     [[nodiscard]] int getID() const{return id;}
     void setExplotion(){
         if (explotionReady) explotionReady = false;

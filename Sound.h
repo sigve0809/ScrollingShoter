@@ -8,6 +8,8 @@
 #include <string>
 #include <iostream>
 #include <SDL_mixer.h>
+
+//Returns new channelnumber when called
 inline int getChannel(){
     static int channel = 0;
     std::cout << channel << std::endl;
